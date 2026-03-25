@@ -1,7 +1,4 @@
-import { useTranslation } from 'react-i18next';
-import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
 import {
   Form,
   FormInput,
@@ -11,6 +8,9 @@ import {
   FormSlider,
   Button,
 } from '@saas-core/core-ui';
+import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+import { z } from 'zod';
 
 const formSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -50,7 +50,7 @@ export function FormsPage() {
   ];
 
   return (
-    <div className="space-y-6 max-w-lg">
+    <div className="max-w-lg space-y-6">
       <div>
         <h1 className="text-3xl font-bold">{t('forms.title')}</h1>
         <p className="text-muted-foreground mt-1">{t('forms.subtitle')}</p>

@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, Link, useLocation } from 'react-router';
-import { useTranslation } from 'react-i18next';
-import { ThemeProvider } from '@saas-core/core/theme';
 import { CurrencyProvider } from '@saas-core/core/currency';
+import { ThemeProvider } from '@saas-core/core/theme';
 import { TooltipProvider } from '@saas-core/core-ui';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Routes, Route, Link, useLocation } from 'react-router';
 
-import { setupI18n } from '@/config/i18n';
-import { warmStudioPreset } from '@/config/theme-presets';
-import { HomePage } from '@/app/routes/index';
 import { ComponentsPage } from '@/app/routes/components';
 import { FormsPage } from '@/app/routes/forms';
-import { ThemingPage } from '@/app/routes/theming';
 import { I18nPage } from '@/app/routes/i18n';
+import { HomePage } from '@/app/routes/index';
+import { ThemingPage } from '@/app/routes/theming';
+import { setupI18n } from '@/config/i18n';
+import { warmStudioPreset } from '@/config/theme-presets';
 
 function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
   const location = useLocation();
@@ -22,7 +22,7 @@ function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
       to={to}
       className={`px-3 pb-px text-sm transition-colors ${
         isActive
-          ? 'text-foreground font-medium border-b-2 border-primary'
+          ? 'text-foreground border-primary border-b-2 font-medium'
           : 'text-muted-foreground hover:text-foreground'
       }`}
     >
@@ -35,14 +35,12 @@ function Navigation() {
   const { t } = useTranslation();
 
   return (
-    <nav className="border-b border-primary/20 bg-card">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-14">
+    <nav className="border-primary/20 bg-card border-b">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-14 items-center justify-between">
           <div className="flex items-center gap-1">
-            <span className="font-display text-xl font-bold italic text-foreground">
-              SaaS Core
-            </span>
-            <span className="font-display text-xl text-muted-foreground font-light">
+            <span className="font-display text-foreground text-xl font-bold italic">SaaS Core</span>
+            <span className="font-display text-muted-foreground text-xl font-light">
               &nbsp;Playground
             </span>
           </div>
@@ -68,22 +66,19 @@ export function App() {
 
   if (!ready) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
+      <div className="flex min-h-screen items-center justify-center">
         <p className="text-muted-foreground">Loading...</p>
       </div>
     );
   }
 
   return (
-    <ThemeProvider
-      presets={[warmStudioPreset]}
-      defaultConfig={{ activePreset: 'warm-studio' }}
-    >
+    <ThemeProvider presets={[warmStudioPreset]} defaultConfig={{ activePreset: 'warm-studio' }}>
       <CurrencyProvider>
         <TooltipProvider>
-          <div className="min-h-screen bg-background text-foreground">
+          <div className="bg-background text-foreground min-h-screen">
             <Navigation />
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/components" element={<ComponentsPage />} />

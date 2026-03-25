@@ -1,9 +1,8 @@
 'use client';
 
-import * as React from 'react';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import * as React from 'react';
 
-import { cn } from '../../lib/utils';
 import { Button } from './button';
 import {
   Command,
@@ -14,6 +13,7 @@ import {
   CommandList,
 } from './command';
 import { Popover, PopoverContent, PopoverTrigger } from './popover';
+import { cn } from '../../lib/utils';
 
 export interface ComboboxOption {
   value: string;
@@ -78,7 +78,10 @@ export function Combobox({
                   }}
                 >
                   <Check
-                    className={cn('mr-2 h-4 w-4', value === option.value ? 'opacity-100' : 'opacity-0')}
+                    className={cn(
+                      'mr-2 h-4 w-4',
+                      value === option.value ? 'opacity-100' : 'opacity-0',
+                    )}
                   />
                   {option.label}
                 </CommandItem>

@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import type { ThemeConfig, ThemeContextValue, ThemePreset, ThemeTokens } from './types';
 import { defaultPreset } from './presets';
 import { loadThemeConfig, saveThemeConfig } from './storage';
+import type { ThemeConfig, ThemeContextValue, ThemePreset, ThemeTokens } from './types';
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
@@ -24,7 +24,11 @@ interface ThemeProviderProps {
   defaultConfig?: Partial<ThemeConfig>;
 }
 
-export function ThemeProvider({ children, presets: extraPresets = [], defaultConfig }: ThemeProviderProps) {
+export function ThemeProvider({
+  children,
+  presets: extraPresets = [],
+  defaultConfig,
+}: ThemeProviderProps) {
   const allPresets = useMemo(() => [defaultPreset, ...extraPresets], [extraPresets]);
 
   const [config, setConfig] = useState<ThemeConfig>(() => {

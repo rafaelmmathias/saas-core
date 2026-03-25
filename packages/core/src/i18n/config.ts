@@ -11,10 +11,7 @@ export const defaultI18nConfig: I18nConfig = {
   namespaces: ['common'],
 };
 
-export async function initI18n(
-  config: Partial<I18nConfig> = {},
-  resources?: Resource,
-) {
+export async function initI18n(config: Partial<I18nConfig> = {}, resources?: Resource) {
   const mergedConfig = { ...defaultI18nConfig, ...config };
 
   await i18next.use(initReactI18next).init({

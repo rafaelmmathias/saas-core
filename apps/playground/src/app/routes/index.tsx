@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import { useCurrency } from '@saas-core/core/currency';
+import { useTranslation } from 'react-i18next';
 
 const cards = [
   {
@@ -38,27 +38,22 @@ export function HomePage() {
         <h1 className="font-display text-4xl font-bold tracking-tight">
           <span className="italic">{t('home.welcome')}</span>
         </h1>
-        <div className="w-12 h-0.5 bg-primary mt-4 mb-3" />
-        <p className="text-lg text-muted-foreground">{t('home.subtitle')}</p>
+        <div className="bg-primary mb-3 mt-4 h-0.5 w-12" />
+        <p className="text-muted-foreground text-lg">{t('home.subtitle')}</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((card) => (
           <div
             key={card.number}
-            className="group bg-card p-6 rounded-md border border-border/60
-                       shadow-[0_1px_3px_rgba(0,0,0,0.06),_0_4px_16px_rgba(160,70,20,0.06)]
-                       hover:border-primary/30 hover:shadow-[0_1px_3px_rgba(0,0,0,0.08),_0_6px_20px_rgba(160,70,20,0.10)]
-                       transition-all duration-200"
+            className="bg-card border-border/60 hover:border-primary/30 group rounded-md border p-6 shadow-[0_1px_3px_rgba(0,0,0,0.06),_0_4px_16px_rgba(160,70,20,0.06)] transition-all duration-200 hover:shadow-[0_1px_3px_rgba(0,0,0,0.08),_0_6px_20px_rgba(160,70,20,0.10)]"
           >
-            <p className="font-display text-xs font-medium text-muted-foreground/60 mb-2 tracking-widest">
+            <p className="font-display text-muted-foreground/60 mb-2 text-xs font-medium tracking-widest">
               {card.number}
             </p>
-            <h3 className="font-semibold text-foreground">{card.title}</h3>
-            <p className="text-sm text-muted-foreground mt-1">
-              {card.currency
-                ? `${t('currency.example')}: ${format(1299.99)}`
-                : card.description}
+            <h3 className="text-foreground font-semibold">{card.title}</h3>
+            <p className="text-muted-foreground mt-1 text-sm">
+              {card.currency ? `${t('currency.example')}: ${format(1299.99)}` : card.description}
             </p>
           </div>
         ))}

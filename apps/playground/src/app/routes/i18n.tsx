@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { useCurrency } from '@saas-core/core/currency';
 import { Button, Badge } from '@saas-core/core-ui';
+import { useTranslation } from 'react-i18next';
 
 export function I18nPage() {
   const { t, i18n } = useTranslation();
@@ -44,18 +44,18 @@ export function I18nPage() {
           </Button>
           <Badge variant="outline">{currency.code}</Badge>
         </div>
-        <div className="grid gap-3 md:grid-cols-3 max-w-md">
+        <div className="grid max-w-md gap-3 md:grid-cols-3">
           <div className="rounded-lg border p-4 text-center">
             <p className="text-2xl font-bold">{format(29.99)}</p>
-            <p className="text-sm text-muted-foreground">Basic</p>
+            <p className="text-muted-foreground text-sm">Basic</p>
           </div>
           <div className="rounded-lg border p-4 text-center">
             <p className="text-2xl font-bold">{format(99.99)}</p>
-            <p className="text-sm text-muted-foreground">Pro</p>
+            <p className="text-muted-foreground text-sm">Pro</p>
           </div>
           <div className="rounded-lg border p-4 text-center">
             <p className="text-2xl font-bold">{format(299.99)}</p>
-            <p className="text-sm text-muted-foreground">Enterprise</p>
+            <p className="text-muted-foreground text-sm">Enterprise</p>
           </div>
         </div>
       </div>

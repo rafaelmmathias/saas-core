@@ -1,6 +1,6 @@
-import { useTranslation } from 'react-i18next';
 import { useTheme } from '@saas-core/core/theme';
 import { Button, Input } from '@saas-core/core-ui';
+import { useTranslation } from 'react-i18next';
 
 export function ThemingPage() {
   const { t } = useTranslation();
@@ -34,7 +34,7 @@ export function ThemingPage() {
             {t('theming.system')}
           </Button>
         </div>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground text-sm">
           Resolved mode: <span className="font-medium">{mode}</span>
         </p>
       </div>

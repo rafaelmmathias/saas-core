@@ -15,9 +15,7 @@ interface CurrencyProviderProps {
 }
 
 export function CurrencyProvider({ children, defaultCurrency }: CurrencyProviderProps) {
-  const [currency, setCurrency] = useState<CurrencyConfig>(
-    defaultCurrency ?? DEFAULT_CURRENCY,
-  );
+  const [currency, setCurrency] = useState<CurrencyConfig>(defaultCurrency ?? DEFAULT_CURRENCY);
 
   const format = useCallback(
     (amount: number, overrideCurrency?: Partial<CurrencyConfig>) => {

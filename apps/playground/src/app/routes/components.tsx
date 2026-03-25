@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import {
   Accordion,
   AccordionContent,
@@ -34,6 +32,8 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@saas-core/core-ui';
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function ComponentsPage() {
   const { t } = useTranslation();
@@ -63,7 +63,7 @@ export function ComponentsPage() {
           <TabsTrigger value="overlay">Overlay</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="buttons" className="space-y-6 mt-4">
+        <TabsContent value="buttons" className="mt-4 space-y-6">
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Buttons</h3>
             <div className="flex flex-wrap gap-3">
@@ -90,12 +90,12 @@ export function ComponentsPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="inputs" className="space-y-6 mt-4">
-          <div className="space-y-3 max-w-md">
+        <TabsContent value="inputs" className="mt-4 space-y-6">
+          <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Input</h3>
             <Input placeholder="Type something..." />
           </div>
-          <div className="space-y-3 max-w-md">
+          <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Checkbox</h3>
             <div className="flex items-center gap-2">
               <Checkbox id="terms" />
@@ -104,12 +104,12 @@ export function ComponentsPage() {
               </label>
             </div>
           </div>
-          <div className="space-y-3 max-w-md">
+          <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Slider</h3>
             <Slider value={sliderValue} onValueChange={setSliderValue} max={100} step={1} />
-            <p className="text-sm text-muted-foreground">Value: {sliderValue[0]}</p>
+            <p className="text-muted-foreground text-sm">Value: {sliderValue[0]}</p>
           </div>
-          <div className="space-y-3 max-w-md">
+          <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Combobox</h3>
             <Combobox
               options={frameworks}
@@ -118,14 +118,14 @@ export function ComponentsPage() {
               placeholder="Select framework..."
             />
           </div>
-          <div className="space-y-3 max-w-md">
+          <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Date Picker</h3>
             <DatePicker date={date} onDateChange={setDate} />
           </div>
         </TabsContent>
 
-        <TabsContent value="feedback" className="space-y-6 mt-4">
-          <div className="space-y-3 max-w-lg">
+        <TabsContent value="feedback" className="mt-4 space-y-6">
+          <div className="max-w-lg space-y-3">
             <h3 className="text-lg font-semibold">Alert</h3>
             <Alert>
               <AlertTitle>Heads up!</AlertTitle>
@@ -171,7 +171,7 @@ export function ComponentsPage() {
           </div>
         </TabsContent>
 
-        <TabsContent value="overlay" className="space-y-6 mt-4">
+        <TabsContent value="overlay" className="mt-4 space-y-6">
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Dialog</h3>
             <Dialog>
@@ -181,9 +181,7 @@ export function ComponentsPage() {
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>Dialog Title</DialogTitle>
-                  <DialogDescription>
-                    This is a dialog component from shadcn/ui.
-                  </DialogDescription>
+                  <DialogDescription>This is a dialog component from shadcn/ui.</DialogDescription>
                 </DialogHeader>
               </DialogContent>
             </Dialog>
