@@ -1,0 +1,53 @@
+{
+  "name": "@saas-core/core-ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./components/*": "./src/components/ui/*.tsx",
+    "./form": "./src/form/index.ts",
+    "./providers": "./src/providers/index.ts",
+    "./hooks": "./src/hooks/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "dev": "tsc --noEmit --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^4.1.0",
+    "@saas-core/core": "workspace:*",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.0",
+    "cmdk": "^1.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.475.0",
+    "radix-ui": "^1.4.3",
+    "react-day-picker": "^9.14.0",
+    "react-hook-form": "^7.54.0",
+    "tailwind-merge": "^3.0.0",
+    "vaul": "^1.1.2",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@saas-core/config-eslint": "workspace:*",
+    "@saas-core/config-tailwind": "workspace:*",
+    "@saas-core/config-ts": "workspace:*",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.21.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^4.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

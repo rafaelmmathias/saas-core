@@ -1,0 +1,7 @@
+{
+  "extends": "@saas-core/config-ts/base",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["*.ts"]
+}

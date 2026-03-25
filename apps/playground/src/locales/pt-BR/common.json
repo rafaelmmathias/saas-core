@@ -1,0 +1,54 @@
+{
+  "app": {
+    "title": "SaaS Core Playground",
+    "description": "Uma vitrine do design system SaaS core"
+  },
+  "nav": {
+    "home": "Início",
+    "components": "Componentes",
+    "forms": "Formulários",
+    "theming": "Temas",
+    "i18n": "Internacionalização"
+  },
+  "home": {
+    "welcome": "Bem-vindo ao SaaS Core",
+    "subtitle": "Explore o design system, componentes, temas e internacionalização."
+  },
+  "theming": {
+    "title": "Editor de Tema",
+    "mode": "Modo",
+    "light": "Claro",
+    "dark": "Escuro",
+    "system": "Sistema",
+    "preset": "Predefinição",
+    "customColors": "Cores Personalizadas",
+    "primary": "Primária",
+    "background": "Fundo",
+    "foreground": "Texto",
+    "reset": "Redefinir para padrões"
+  },
+  "i18n": {
+    "title": "Internacionalização",
+    "currentLanguage": "Idioma atual",
+    "switchLanguage": "Trocar idioma",
+    "example": "Este texto é traduzido usando i18next."
+  },
+  "components": {
+    "title": "Galeria de Componentes",
+    "subtitle": "Todos os componentes core do design system"
+  },
+  "forms": {
+    "title": "Exemplos de Formulários",
+    "subtitle": "Componentes de formulário integrados com react-hook-form",
+    "name": "Nome",
+    "email": "E-mail",
+    "namePlaceholder": "Digite seu nome",
+    "emailPlaceholder": "voce@exemplo.com",
+    "submit": "Enviar",
+    "success": "Formulário enviado com sucesso!"
+  },
+  "currency": {
+    "example": "Preço",
+    "current": "Moeda atual"
+  }
+}

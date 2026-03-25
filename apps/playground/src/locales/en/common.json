@@ -1,0 +1,54 @@
+{
+  "app": {
+    "title": "SaaS Core Playground",
+    "description": "A showcase of the SaaS core design system"
+  },
+  "nav": {
+    "home": "Home",
+    "components": "Components",
+    "forms": "Forms",
+    "theming": "Theming",
+    "i18n": "Internationalization"
+  },
+  "home": {
+    "welcome": "Welcome to SaaS Core",
+    "subtitle": "Explore the design system, components, theming, and internationalization capabilities."
+  },
+  "theming": {
+    "title": "Theme Editor",
+    "mode": "Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "preset": "Preset",
+    "customColors": "Custom Colors",
+    "primary": "Primary",
+    "background": "Background",
+    "foreground": "Foreground",
+    "reset": "Reset to defaults"
+  },
+  "i18n": {
+    "title": "Internationalization",
+    "currentLanguage": "Current language",
+    "switchLanguage": "Switch language",
+    "example": "This text is translated using i18next."
+  },
+  "components": {
+    "title": "Component Gallery",
+    "subtitle": "All core components from the design system"
+  },
+  "forms": {
+    "title": "Form Examples",
+    "subtitle": "Form components integrated with react-hook-form",
+    "name": "Name",
+    "email": "Email",
+    "namePlaceholder": "Enter your name",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Submit",
+    "success": "Form submitted successfully!"
+  },
+  "currency": {
+    "example": "Price",
+    "current": "Current currency"
+  }
+}
