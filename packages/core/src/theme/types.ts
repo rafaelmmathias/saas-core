@@ -8,6 +8,8 @@ export interface ThemeTokens {
   'secondary-foreground': string;
   destructive: string;
   'destructive-foreground': string;
+  success: string;
+  'success-foreground': string;
   muted: string;
   'muted-foreground': string;
   accent: string;

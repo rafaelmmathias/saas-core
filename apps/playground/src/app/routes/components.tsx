@@ -34,6 +34,8 @@ export function ComponentsPage() {
   const [comboValue, setComboValue] = useState('');
   const [editorColor, setEditorColor] = useState('221 83% 53%');
   const [activeSwatch, setActiveSwatch] = useState('blue');
+  const [buttonFiles, setButtonFiles] = useState<File[] | null>(null);
+  const [dropzoneFiles, setDropzoneFiles] = useState<File[] | null>(null);
   const [date, setDate] = useState<Date>();
 
   const frameworks = [
@@ -117,6 +119,27 @@ export function ComponentsPage() {
           <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Date Picker</h3>
             <DatePicker date={date} onDateChange={setDate} />
+          </div>
+          <div className="max-w-xl space-y-3">
+            <h3 className="text-lg font-semibold">File Upload</h3>
+            <div className="flex flex-col gap-4">
+              <InputFile
+                accept=".pdf,.png,.jpg,.jpeg"
+                buttonText="Upload document"
+                files={buttonFiles}
+                onFilesChange={setButtonFiles}
+                placeholder="Nothing uploaded yet."
+              />
+              <InputFile
+                accept="image/*"
+                buttonText="Drop hero images"
+                files={dropzoneFiles}
+                multiple
+                onFilesChange={setDropzoneFiles}
+                placeholder="Ready for images"
+                variant="dropzone"
+              />
+            </div>
           </div>
         </TabsContent>
 

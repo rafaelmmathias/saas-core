@@ -45,6 +45,7 @@ const TOKEN_GROUPS = [
       { key: 'border', label: 'Border' },
       { key: 'ring', label: 'Ring' },
       { key: 'destructive', label: 'Danger' },
+      { key: 'success', label: 'Success' },
     ],
   },
 ] as const;
