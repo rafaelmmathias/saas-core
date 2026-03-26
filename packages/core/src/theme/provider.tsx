@@ -6,16 +6,60 @@ import type { ThemeConfig, ThemeContextValue, ThemePreset, ThemeTokens } from '.
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-function applyTokensToDOM(tokens: ThemeTokens): void {
-  const root = document.documentElement;
-  Object.entries(tokens).forEach(([key, value]) => {
-    root.style.setProperty(`--${key}`, value);
-  });
+function escapeAttributeValue(value: string): string {
+  return value.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+}
+
+function serializeTokenDeclarations(tokens: Partial<ThemeTokens>): string {
+  return Object.entries(tokens)
+    .map(([key, value]) => `--${key}: ${value};`)
+    .join('');
+}
+
+function buildPresetStyles(presets: ThemePreset[]): string {
+  return presets
+    .map((preset) => {
+      const presetName = escapeAttributeValue(preset.name);
+
+      return [
+        `:root[data-theme-preset="${presetName}"] {${serializeTokenDeclarations(preset.tokens.light)}}`,
+        `:root.dark[data-theme-preset="${presetName}"] {${serializeTokenDeclarations(preset.tokens.dark)}}`,
+      ].join('\n');
+    })
+    .join('\n');
+}
+
+function buildCustomTokenStyles(customTokens?: Partial<ThemeTokens>): string {
+  if (!customTokens || Object.keys(customTokens).length === 0) {
+    return '';
+  }
+
+  return `:root[data-theme-preset] {${serializeTokenDeclarations(customTokens)}}`;
 }
 
 function getSystemMode(): 'light' | 'dark' {
   if (typeof window === 'undefined') return 'light';
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function ThemeRuntimeStyles({
+  presets,
+  customTokens,
+}: {
+  presets: ThemePreset[];
+  customTokens?: Partial<ThemeTokens>;
+}) {
+  const presetStyles = useMemo(() => buildPresetStyles(presets), [presets]);
+  const customTokenStyles = useMemo(() => buildCustomTokenStyles(customTokens), [customTokens]);
+
+  return (
+    <>
+      <style data-saas-core-theme="presets">{presetStyles}</style>
+      {customTokenStyles ? (
+        <style data-saas-core-theme="overrides">{customTokenStyles}</style>
+      ) : null}
+    </>
+  );
 }
 
 interface ThemeProviderProps {
@@ -33,7 +77,7 @@ export function ThemeProvider({
 
   const [config, setConfig] = useState<ThemeConfig>(() => {
     const loaded = loadThemeConfig();
-    return { ...loaded, ...defaultConfig };
+    return { ...defaultConfig, ...loaded };
   });
 
   const [systemMode, setSystemMode] = useState<'light' | 'dark'>(getSystemMode);
@@ -50,11 +94,11 @@ export function ThemeProvider({
     return { ...baseTokens, ...config.customTokens };
   }, [activePreset, resolvedMode, config.customTokens]);
 
-  // Apply tokens to DOM
   useEffect(() => {
-    applyTokensToDOM(tokens);
-    document.documentElement.classList.toggle('dark', resolvedMode === 'dark');
-  }, [tokens, resolvedMode]);
+    const root = document.documentElement;
+    root.classList.toggle('dark', resolvedMode === 'dark');
+    root.dataset.themePreset = config.activePreset;
+  }, [config.activePreset, resolvedMode]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -97,7 +141,12 @@ export function ThemeProvider({
     [config, tokens, resolvedMode, setMode, setPreset, setCustomTokens, allPresets],
   );
 
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={value}>
+      <ThemeRuntimeStyles customTokens={config.customTokens} presets={allPresets} />
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 export function useTheme(): ThemeContextValue {

@@ -1,5 +1,6 @@
 'use client';
 
+import throttle from 'lodash/throttle';
 import { PipetteIcon } from 'lucide-react';
 import * as React from 'react';
 
@@ -66,7 +67,7 @@ function SliderRow({
     </div>
   );
 }
-
+const THROTTLE_WAIT = 20;
 function ColorEditor({ label, value, onChange, className }: ColorEditorProps) {
   const pickerRef = React.useRef<HTMLInputElement>(null);
   const { h, s, l } = parseHsl(value);
@@ -75,6 +76,24 @@ function ColorEditor({ label, value, onChange, className }: ColorEditorProps) {
   const hueGradient = `linear-gradient(to right, hsl(0 ${s}% ${l}%), hsl(30 ${s}% ${l}%), hsl(60 ${s}% ${l}%), hsl(90 ${s}% ${l}%), hsl(120 ${s}% ${l}%), hsl(150 ${s}% ${l}%), hsl(180 ${s}% ${l}%), hsl(210 ${s}% ${l}%), hsl(240 ${s}% ${l}%), hsl(270 ${s}% ${l}%), hsl(300 ${s}% ${l}%), hsl(330 ${s}% ${l}%), hsl(360 ${s}% ${l}%))`;
   const saturationGradient = `linear-gradient(to right, hsl(${h} 0% ${l}%), hsl(${h} 100% ${l}%))`;
   const lightnessGradient = `linear-gradient(to right, hsl(${h} ${s}% 0%), hsl(${h} ${s}% 50%), hsl(${h} ${s}% 100%))`;
+
+  const handlePickerChange = React.useMemo(
+    () =>
+      throttle(
+        (nextHexValue: string) => {
+          onChange(hexToHsl(nextHexValue));
+        },
+        THROTTLE_WAIT,
+        { leading: true, trailing: true },
+      ),
+    [onChange],
+  );
+
+  React.useEffect(() => {
+    return () => {
+      handlePickerChange.cancel();
+    };
+  }, [handlePickerChange]);
 
   return (
     <div
@@ -100,7 +119,7 @@ function ColorEditor({ label, value, onChange, className }: ColorEditorProps) {
         <input
           aria-label={`Pick color: ${resolvedLabel}`}
           className="sr-only"
-          onChange={(event) => onChange(hexToHsl(event.target.value))}
+          onChange={(event) => handlePickerChange(event.target.value)}
           ref={pickerRef}
           type="color"
           value={hslToHex(value)}
