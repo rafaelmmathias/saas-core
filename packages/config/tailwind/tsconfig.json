@@ -1,5 +1,5 @@
 {
-  "extends": "@saas-core/config-ts/base",
+  "extends": "../config-ts/base.json",
   "compilerOptions": {
     "outDir": "dist"
   },
