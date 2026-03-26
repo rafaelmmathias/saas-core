@@ -15,7 +15,8 @@
     "dev": "tsc --noEmit --watch",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
-    "test": "jest"
+    "test": "jest",
+    "lint:fix": "eslint src/ --fix"
   },
   "dependencies": {
     "clsx": "^2.1.0",

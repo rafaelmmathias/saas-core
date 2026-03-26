@@ -13,6 +13,7 @@
     "dev": "tsc --noEmit --watch",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
+    "lint:fix": "eslint src/ --fix",
     "test": "jest"
   },
   "dependencies": {

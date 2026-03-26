@@ -125,6 +125,14 @@ export function ComponentsPage() {
               <AlertDescription>This is an informational alert using shadcn/ui.</AlertDescription>
             </Alert>
           </div>
+          <div className="max-w-lg space-y-3">
+            <h3 className="text-lg font-semibold">Progress</h3>
+            <div className="space-y-2">
+              <Progress value={33} />
+              <Progress value={66} />
+              <Progress value={100} />
+            </div>
+          </div>
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Skeleton</h3>
             <div className="flex items-center gap-4">
