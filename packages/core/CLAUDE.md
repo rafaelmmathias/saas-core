@@ -8,6 +8,7 @@ Framework-agnostic (with React bindings) utility package providing:
 - **helpers/**: cn() utility for className merging
 
 ## Key Rules
+
 - This package CAN include React code (providers, hooks) since all apps are React-based
 - Theme persistence uses localStorage (key: `saas-core-theme`)
 - Theme tokens are HSL values without the `hsl()` wrapper (e.g., `"240 5.9% 10%"`)
@@ -15,6 +16,7 @@ Framework-agnostic (with React bindings) utility package providing:
 - Currency formatting uses `Intl.NumberFormat` — no external deps
 
 ## Exports
+
 ```ts
 import { ThemeProvider, useTheme } from '@saas-core/core/theme';
 import { initI18n } from '@saas-core/core/i18n';
