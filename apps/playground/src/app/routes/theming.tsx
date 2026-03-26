@@ -1,9 +1,23 @@
 import { useTheme } from '@saas-core/core/theme';
 import { Button } from '@saas-core/core-ui/components/button';
-import { Input } from '@saas-core/core-ui/components/input';
+import type { ThemeTokens } from '@saas-core/core/theme';
+import { ColorEditor } from '@saas-core/core-ui/components/composite/color-editor';
+import { ColorSwatch } from '@saas-core/core-ui/components/composite/color-swatch';
+import { Label } from '@saas-core/core-ui/components/label';
+import { Slider } from '@saas-core/core-ui/components/slider';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 // ─── Token groups ─────────────────────────────────────────────────────────────
+
+const RADIUS_PRESETS = [
+  { label: 'None', value: '0rem' },
+  { label: 'XS', value: '0.25rem' },
+  { label: 'SM', value: '0.375rem' },
+  { label: 'MD', value: '0.5rem' },
+  { label: 'LG', value: '0.75rem' },
+  { label: 'XL', value: '1rem' },
+] as const;
 
 const TOKEN_GROUPS = [
   {
@@ -87,6 +101,79 @@ export function ThemingPage() {
               {preset.label}
             </Button>
           ))}
+        </div>
+      </div>
+
+      {/* Radius Override */}
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Radius</h2>
+        <div className="space-y-4">
+          {/* Presets */}
+          <div className="flex flex-wrap gap-2">
+            {RADIUS_PRESETS.map(({ label, value }) => {
+              const currentRadius =
+                (config.customTokens?.radius as string | undefined) ?? getTokenValue('radius');
+              const isActive = currentRadius === value;
+              return (
+                <Button
+                  key={value}
+                  variant={isActive ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setCustomTokens({ radius: value })}
+                >
+                  {label}
+                </Button>
+              );
+            })}
+          </div>
+
+          {/* Slider */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <Label>Fine-tune</Label>
+              <span className="text-sm font-medium">
+                {(config.customTokens?.radius as string | undefined) ?? getTokenValue('radius')}
+              </span>
+            </div>
+            <Slider
+              value={[
+                parseFloat(
+                  (config.customTokens?.radius as string | undefined) ?? getTokenValue('radius'),
+                ) * 16,
+              ]}
+              onValueChange={(val) => {
+                if (val[0] !== undefined) {
+                  const remValue = (val[0] / 16).toFixed(3);
+                  setCustomTokens({ radius: `${remValue}rem` });
+                }
+              }}
+              min={0}
+              max={32}
+              step={0.25}
+              className="w-full"
+            />
+          </div>
+
+          {/* Preview */}
+          <div className="space-y-2">
+            <p className="text-muted-foreground text-xs font-medium">Preview</p>
+            <div className="flex gap-4">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="border-border border"
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius:
+                      (config.customTokens?.radius as string | undefined) ??
+                      getTokenValue('radius'),
+                    backgroundColor: `hsl(${getTokenValue('primary')})`,
+                  }}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
