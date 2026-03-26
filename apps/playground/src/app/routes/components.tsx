@@ -32,6 +32,8 @@ export function ComponentsPage() {
   const { t } = useTranslation();
   const [sliderValue, setSliderValue] = useState([50]);
   const [comboValue, setComboValue] = useState('');
+  const [editorColor, setEditorColor] = useState('221 83% 53%');
+  const [activeSwatch, setActiveSwatch] = useState('blue');
   const [date, setDate] = useState<Date>();
 
   const frameworks = [
@@ -52,6 +54,7 @@ export function ComponentsPage() {
         <TabsList>
           <TabsTrigger value="buttons">Buttons & Badges</TabsTrigger>
           <TabsTrigger value="inputs">Inputs</TabsTrigger>
+          <TabsTrigger value="color">Color</TabsTrigger>
           <TabsTrigger value="feedback">Feedback</TabsTrigger>
           <TabsTrigger value="overlay">Overlay</TabsTrigger>
         </TabsList>
@@ -114,6 +117,33 @@ export function ComponentsPage() {
           <div className="max-w-md space-y-3">
             <h3 className="text-lg font-semibold">Date Picker</h3>
             <DatePicker date={date} onDateChange={setDate} />
+          </div>
+        </TabsContent>
+
+        <TabsContent value="color" className="mt-4 space-y-6">
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">Color Swatch</h3>
+            <div className="flex flex-wrap gap-4">
+              {[
+                { id: 'blue', label: 'Ocean', color: '221 83% 53%' },
+                { id: 'green', label: 'Mint', color: '142 71% 45%' },
+                { id: 'amber', label: 'Amber', color: '38 92% 50%' },
+              ].map((swatch) => (
+                <ColorSwatch
+                  key={swatch.id}
+                  color={swatch.color}
+                  isActive={activeSwatch === swatch.id}
+                  label={swatch.label}
+                  onClick={() => setActiveSwatch(swatch.id)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-sm space-y-3">
+            <h3 className="text-lg font-semibold">Color Editor</h3>
+            <ColorEditor label="Accent" onChange={setEditorColor} value={editorColor} />
+            <p className="text-muted-foreground text-sm">Value: {editorColor}</p>
           </div>
         </TabsContent>
 

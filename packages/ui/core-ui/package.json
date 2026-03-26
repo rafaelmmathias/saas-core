@@ -6,7 +6,12 @@
   "sideEffects": false,
   "exports": {
     "./components/*": "./src/components/ui/*.tsx",
-    "./form/*": "./src/form/*.tsx"
+    "./form/*": "./src/form/*.tsx",
+    "./components/composite/*": "./src/components/composite/*.tsx",
+    "./form": "./src/form/index.ts",
+    "./lib/color": "./src/lib/color.ts",
+    "./providers": "./src/providers/index.ts",
+    "./hooks": "./src/hooks/index.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",
