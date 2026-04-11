@@ -28,5 +28,5 @@ export async function initI18n(config: Partial<I18nConfig> = {}, resources?: Res
 
   return i18next;
 }
-i18next.use(initReactI18next);
+
 export { i18next };
