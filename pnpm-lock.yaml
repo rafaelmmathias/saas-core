@@ -28,7 +28,7 @@ importers:
         version: link:../../packages/core
       '@saas-core/core-ui':
         specifier: workspace:*
-        version: link:../../packages/core-ui
+        version: link:../../packages/ui/core-ui
       i18next:
         specifier: ^24.2.0
         version: 24.2.3(typescript@5.9.3)
@@ -56,10 +56,10 @@ importers:
     devDependencies:
       '@saas-core/config-eslint':
         specifier: workspace:*
-        version: link:../../packages/config-eslint
+        version: link:../../packages/config/eslint
       '@saas-core/config-ts':
         specifier: workspace:*
-        version: link:../../packages/config-ts
+        version: link:../../packages/config/ts
       '@tailwindcss/vite':
         specifier: ^4.1.0
         version: 4.2.2(vite@6.4.1(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0))
@@ -91,7 +91,7 @@ importers:
         specifier: ^6.2.0
         version: 6.4.1(@types/node@25.6.0)(jiti@2.6.1)(lightningcss@1.32.0)
 
-  packages/config-eslint:
+  packages/config/eslint:
     dependencies:
       '@eslint/js':
         specifier: ^9.21.0
@@ -119,13 +119,13 @@ importers:
         specifier: ^9.21.0
         version: 9.39.4(jiti@2.6.1)
 
-  packages/config-tailwind:
+  packages/config/tailwind:
     devDependencies:
       tailwindcss:
         specifier: ^4.1.0
         version: 4.2.2
 
-  packages/config-ts: {}
+  packages/config/ts: {}
 
   packages/core:
     dependencies:
@@ -150,10 +150,10 @@ importers:
     devDependencies:
       '@saas-core/config-eslint':
         specifier: workspace:*
-        version: link:../config-eslint
+        version: link:../config/eslint
       '@saas-core/config-ts':
         specifier: workspace:*
-        version: link:../config-ts
+        version: link:../config/ts
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.14
@@ -170,14 +170,14 @@ importers:
         specifier: ^5.7.0
         version: 5.9.3
 
-  packages/core-ui:
+  packages/ui/core-ui:
     dependencies:
       '@hookform/resolvers':
         specifier: ^4.1.0
         version: 4.1.3(react-hook-form@7.72.0(react@19.2.4))
       '@saas-core/core':
         specifier: workspace:*
-        version: link:../core
+        version: link:../../core
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -214,13 +214,13 @@ importers:
     devDependencies:
       '@saas-core/config-eslint':
         specifier: workspace:*
-        version: link:../config-eslint
+        version: link:../../config/eslint
       '@saas-core/config-tailwind':
         specifier: workspace:*
-        version: link:../config-tailwind
+        version: link:../../config/tailwind
       '@saas-core/config-ts':
         specifier: workspace:*
-        version: link:../config-ts
+        version: link:../../config/ts
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.14
