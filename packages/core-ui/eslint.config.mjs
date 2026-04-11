@@ -1,2 +1,2 @@
-import react from '@saas-core/config-eslint/react';
-export default [...react];
+import libraryReact from '@saas-core/config-eslint/library-react';
+export default [...libraryReact];
