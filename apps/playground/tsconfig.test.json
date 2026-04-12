@@ -1,8 +1,7 @@
 {
-  "extends": "@saas-core/config-ts/react",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "dist",
-    "rootDir": "src"
+    "types": ["jest", "@testing-library/jest-dom", "node"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
