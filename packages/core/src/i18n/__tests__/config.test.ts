@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import type i18next from 'i18next';
 
 import { defaultI18nConfig, initI18n } from '../config';
 

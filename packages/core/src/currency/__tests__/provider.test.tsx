@@ -9,9 +9,7 @@ function CurrencyDisplay() {
     <div>
       <span data-testid="code">{currency.code}</span>
       <span data-testid="formatted">{format(1234.5)}</span>
-      <button onClick={() => setCurrency({ code: 'EUR', locale: 'de-DE' })}>
-        Switch to EUR
-      </button>
+      <button onClick={() => setCurrency({ code: 'EUR', locale: 'de-DE' })}>Switch to EUR</button>
     </div>
   );
 }
