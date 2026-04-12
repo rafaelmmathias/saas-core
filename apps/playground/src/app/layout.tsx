@@ -1,6 +1,6 @@
 import { CurrencyProvider } from '@saas-core/core/currency';
 import { ThemeProvider } from '@saas-core/core/theme';
-import { TooltipProvider } from '@saas-core/core-ui';
+import { TooltipProvider } from '@saas-core/core-ui/components/tooltip';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Routes, Route, Link, useLocation } from 'react-router';

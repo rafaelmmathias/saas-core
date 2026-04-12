@@ -1,13 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  Form,
-  FormInput,
-  FormCheckbox,
-  FormCombobox,
-  FormDatePicker,
-  FormSlider,
-  Button,
-} from '@saas-core/core-ui';
+import { Button } from '@saas-core/core-ui/components/button';
+import { Form } from '@saas-core/core-ui/components/form';
+import { FormCheckbox } from '@saas-core/core-ui/form/form-checkbox';
+import { FormCombobox } from '@saas-core/core-ui/form/form-combobox';
+import { FormDatePicker } from '@saas-core/core-ui/form/form-datepicker';
+import { FormInput } from '@saas-core/core-ui/form/form-input';
+import { FormSlider } from '@saas-core/core-ui/form/form-slider';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { z } from 'zod';

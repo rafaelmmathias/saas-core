@@ -1,5 +1,6 @@
 import { useTheme } from '@saas-core/core/theme';
-import { Button, Input } from '@saas-core/core-ui';
+import { Button } from '@saas-core/core-ui/components/button';
+import { Input } from '@saas-core/core-ui/components/input';
 import { useTranslation } from 'react-i18next';
 
 export function ThemingPage() {

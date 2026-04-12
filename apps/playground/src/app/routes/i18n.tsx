@@ -1,5 +1,6 @@
 import { useCurrency } from '@saas-core/core/currency';
-import { Button, Badge } from '@saas-core/core-ui';
+import { Badge } from '@saas-core/core-ui/components/badge';
+import { Button } from '@saas-core/core-ui/components/button';
 import { useTranslation } from 'react-i18next';
 
 export function I18nPage() {
