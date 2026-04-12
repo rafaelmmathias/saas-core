@@ -21,3 +21,7 @@ git status --short
 echo ""
 echo "=== COMMITS_AHEAD ==="
 git log --oneline "origin/${MAIN_BRANCH}..HEAD"
+
+echo ""
+echo "=== DIFF_STAT ==="
+git diff --shortstat "origin/${MAIN_BRANCH}..HEAD"

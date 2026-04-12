@@ -18,6 +18,7 @@ Parse the output using the `=== LABEL ===` section delimiters:
 - **REMOTE_URL** — must contain `github.com`; if not, abort and tell the user this command only works with GitHub remotes
 - **DIRTY_FILES** — raw output of `git status --short`
 - **COMMITS_AHEAD** — lines of `<hash> <subject>` commits ahead of `main`
+- **DIFF_STAT** — output of `git diff --shortstat` (e.g. `3 files changed, 120 insertions(+), 45 deletions(-)`)
 
 ---
 
@@ -81,6 +82,7 @@ PR PREVIEW
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Title:  <generated title>
 Target: main ← <current branch>
+Changes: <DIFF_STAT value, e.g. "11 files changed, 284 insertions(+), 45 deletions(-)">
 
 <full description>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
