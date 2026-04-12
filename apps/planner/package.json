@@ -1,0 +1,41 @@
+{
+  "name": "@saas-core/planner",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "@saas-core/core": "workspace:*",
+    "@saas-core/core-ui": "workspace:*",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.4.0",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@saas-core/config-eslint": "workspace:*",
+    "@saas-core/config-ts": "workspace:*",
+    "@tailwindcss/vite": "^4.1.0",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react-swc": "^4.1.0",
+    "eslint": "^9.21.0",
+    "tailwindcss": "^4.1.0",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^6.0.2",
+    "vite": "^6.2.0"
+  }
+}
