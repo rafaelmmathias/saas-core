@@ -106,13 +106,14 @@ If the user requests changes, revise and reprint the preview. Repeat until appro
 
 Once approved:
 
-**6a.** Check whether the branch exists on the remote:
+**6a.** Compare the local HEAD with what is on the remote:
 
 ```bash
-git ls-remote --exit-code origin <branch>
+LOCAL=$(git rev-parse HEAD)
+REMOTE=$(git ls-remote origin refs/heads/<branch> | cut -f1)
 ```
 
-If the command exits non-zero (branch not on remote), push it first:
+If `REMOTE` is empty (branch does not exist) or `LOCAL != REMOTE` (local has unpushed commits), push first:
 
 ```bash
 git push -u origin <branch>
