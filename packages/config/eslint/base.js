@@ -17,12 +17,7 @@ export default [
       'import-x/order': [
         'error',
         {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            ['parent', 'sibling', 'index'],
-          ],
+          groups: ['builtin', 'external', 'internal', ['parent', 'sibling', 'index']],
           'newlines-between': 'always',
           alphabetize: { order: 'asc', caseInsensitive: true },
         },
@@ -32,10 +27,7 @@ export default [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/consistent-type-imports': [
-        'error',
-        { prefer: 'type-imports' },
-      ],
+      '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports' }],
     },
   },
   {

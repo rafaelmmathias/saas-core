@@ -2,7 +2,9 @@
   "name": "@saas-core/config-ts",
   "private": true,
   "version": "0.0.0",
-  "files": ["*.json"],
+  "files": [
+    "*.json"
+  ],
   "exports": {
     "./base": "./base.json",
     "./react": "./react.json",

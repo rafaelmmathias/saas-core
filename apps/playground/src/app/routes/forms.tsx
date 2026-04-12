@@ -5,6 +5,7 @@ import { FormCheckbox } from '@saas-core/core-ui/form/form-checkbox';
 import { FormCombobox } from '@saas-core/core-ui/form/form-combobox';
 import { FormDatePicker } from '@saas-core/core-ui/form/form-datepicker';
 import { FormInput } from '@saas-core/core-ui/form/form-input';
+import { FormInputFile } from '@saas-core/core-ui/form/form-input-file';
 import { FormSlider } from '@saas-core/core-ui/form/form-slider';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,13 @@ const formSchema = z.object({
   email: z.string().email('Invalid email address'),
   framework: z.string().min(1, 'Please select a framework'),
   birthDate: z.date({ required_error: 'Please select a date' }),
+  attachments: z
+    .custom<File[] | null>((value) => value === null || Array.isArray(value))
+    .refine((value) => Array.isArray(value) && value.length > 0, 'Please upload at least one file.')
+    .refine(
+      (value) => value == null || value.every((f) => /\.(pdf|png|jpe?g)$/i.test(f.name)),
+      'Only PDF, PNG, and JPEG files are accepted.',
+    ),
   experience: z.number().min(0).max(20),
   terms: z.boolean().refine((v) => v, 'You must accept the terms'),
 });
@@ -30,6 +38,7 @@ export function FormsPage() {
       name: '',
       email: '',
       framework: '',
+      attachments: null,
       experience: 5,
       terms: false,
     },
@@ -84,6 +93,18 @@ export function FormsPage() {
             name="birthDate"
             label="Birth Date"
             placeholder="Select your birth date"
+          />
+
+          <FormInputFile<FormValues>
+            accept=".pdf,.png,.jpg,.jpeg"
+            buttonText="Upload attachments"
+            control={form.control}
+            description="Try the file input with React Hook Form."
+            label="Attachments"
+            multiple
+            name="attachments"
+            placeholder="No attachments selected yet."
+            variant="dropzone"
           />
 
           <FormSlider<FormValues>

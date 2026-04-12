@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "lint": "eslint src/",
     "typecheck": "tsc --noEmit",
+    "lint:fix": "eslint src/ --fix",
     "test": "jest"
   },
   "dependencies": {

@@ -10,6 +10,8 @@ import { Badge } from '@saas-core/core-ui/components/badge';
 import { Button } from '@saas-core/core-ui/components/button';
 import { Checkbox } from '@saas-core/core-ui/components/checkbox';
 import { Combobox } from '@saas-core/core-ui/components/combobox';
+import { ColorEditor } from '@saas-core/core-ui/components/composite/color-editor';
+import { ColorSwatch } from '@saas-core/core-ui/components/composite/color-swatch';
 import { DatePicker } from '@saas-core/core-ui/components/date-picker';
 import {
   Dialog,
@@ -20,6 +22,8 @@ import {
   DialogTrigger,
 } from '@saas-core/core-ui/components/dialog';
 import { Input } from '@saas-core/core-ui/components/input';
+import { InputFile } from '@saas-core/core-ui/components/input-file';
+import { Progress } from '@saas-core/core-ui/components/progress';
 import { Skeleton } from '@saas-core/core-ui/components/skeleton';
 import { Slider } from '@saas-core/core-ui/components/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@saas-core/core-ui/components/tabs';
@@ -32,6 +36,10 @@ export function ComponentsPage() {
   const { t } = useTranslation();
   const [sliderValue, setSliderValue] = useState([50]);
   const [comboValue, setComboValue] = useState('');
+  const [editorColor, setEditorColor] = useState('221 83% 53%');
+  const [activeSwatch, setActiveSwatch] = useState('blue');
+  const [buttonFiles, setButtonFiles] = useState<File[] | null>(null);
+  const [dropzoneFiles, setDropzoneFiles] = useState<File[] | null>(null);
   const [date, setDate] = useState<Date>();
 
   const frameworks = [
@@ -52,6 +60,7 @@ export function ComponentsPage() {
         <TabsList>
           <TabsTrigger value="buttons">Buttons & Badges</TabsTrigger>
           <TabsTrigger value="inputs">Inputs</TabsTrigger>
+          <TabsTrigger value="color">Color</TabsTrigger>
           <TabsTrigger value="feedback">Feedback</TabsTrigger>
           <TabsTrigger value="overlay">Overlay</TabsTrigger>
         </TabsList>
@@ -115,6 +124,54 @@ export function ComponentsPage() {
             <h3 className="text-lg font-semibold">Date Picker</h3>
             <DatePicker date={date} onDateChange={setDate} />
           </div>
+          <div className="max-w-xl space-y-3">
+            <h3 className="text-lg font-semibold">File Upload</h3>
+            <div className="flex flex-col gap-4">
+              <InputFile
+                accept=".pdf,.png,.jpg,.jpeg"
+                buttonText="Upload document"
+                files={buttonFiles}
+                onFilesChange={setButtonFiles}
+                placeholder="Nothing uploaded yet."
+              />
+              <InputFile
+                accept="image/*"
+                buttonText="Drop hero images"
+                files={dropzoneFiles}
+                multiple
+                onFilesChange={setDropzoneFiles}
+                placeholder="Ready for images"
+                variant="dropzone"
+              />
+            </div>
+          </div>
+        </TabsContent>
+
+        <TabsContent value="color" className="mt-4 space-y-6">
+          <div className="space-y-3">
+            <h3 className="text-lg font-semibold">Color Swatch</h3>
+            <div className="flex flex-wrap gap-4">
+              {[
+                { id: 'blue', label: 'Ocean', color: '221 83% 53%' },
+                { id: 'green', label: 'Mint', color: '142 71% 45%' },
+                { id: 'amber', label: 'Amber', color: '38 92% 50%' },
+              ].map((swatch) => (
+                <ColorSwatch
+                  key={swatch.id}
+                  color={swatch.color}
+                  isActive={activeSwatch === swatch.id}
+                  label={swatch.label}
+                  onClick={() => setActiveSwatch(swatch.id)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-sm space-y-3">
+            <h3 className="text-lg font-semibold">Color Editor</h3>
+            <ColorEditor label="Accent" onChange={setEditorColor} value={editorColor} />
+            <p className="text-muted-foreground text-sm">Value: {editorColor}</p>
+          </div>
         </TabsContent>
 
         <TabsContent value="feedback" className="mt-4 space-y-6">
@@ -124,6 +181,14 @@ export function ComponentsPage() {
               <AlertTitle>Heads up!</AlertTitle>
               <AlertDescription>This is an informational alert using shadcn/ui.</AlertDescription>
             </Alert>
+          </div>
+          <div className="max-w-lg space-y-3">
+            <h3 className="text-lg font-semibold">Progress</h3>
+            <div className="space-y-2">
+              <Progress value={33} />
+              <Progress value={66} />
+              <Progress value={100} />
+            </div>
           </div>
           <div className="space-y-3">
             <h3 className="text-lg font-semibold">Skeleton</h3>

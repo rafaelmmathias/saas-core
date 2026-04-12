@@ -14,6 +14,7 @@ bash scripts/git-pr-info.sh
 ```
 
 Parse the output using the `=== LABEL ===` section delimiters:
+
 - **BRANCH** — the current branch name
 - **REMOTE_URL** — must contain `github.com`; if not, abort and tell the user this command only works with GitHub remotes
 - **DIRTY_FILES** — raw output of `git status --short`
@@ -38,8 +39,8 @@ If **COMMITS_AHEAD** is empty, say: "There are no commits ahead of `main`. Nothi
 
 Otherwise, display a markdown table of commits that will be in the PR (newest first):
 
-| Hash | Commit message |
-|------|----------------|
+| Hash    | Commit message                |
+| ------- | ----------------------------- |
 | abc1234 | feat: add user authentication |
 
 ---
@@ -66,7 +67,8 @@ Using only the commit list, generate:
 ```
 
 Rules:
-- Summary bullets describe *what changed and why*, not just the commit subject
+
+- Summary bullets describe _what changed and why_, not just the commit subject
 - Test plan should reflect the actual changes (if purely mechanical, say so)
 - Do not fabricate details not present in the commit messages
 
@@ -80,11 +82,11 @@ Print the preview using this markdown layout (render it as markdown, not inside 
 
 ## PR Preview
 
-| Field | Value |
-| --- | --- |
-| **Title** | `<generated title>` |
-| **Target** | `<current branch>` → `main` |
-| **Changes** | `<DIFF_STAT value>` |
+| Field       | Value                       |
+| ----------- | --------------------------- |
+| **Title**   | `<generated title>`         |
+| **Target**  | `<current branch>` → `main` |
+| **Changes** | `<DIFF_STAT value>`         |
 
 ## Summary
 
@@ -137,6 +139,7 @@ PRBODY
 - On failure: show the full error output
 
 Common failure causes:
+
 - Not authenticated → tell user to run `gh auth login`
 - PR already exists for this branch → show the existing PR URL
 

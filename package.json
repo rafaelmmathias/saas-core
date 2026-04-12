@@ -4,15 +4,19 @@
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "turbo run dev",
+    "play": "pnpm --filter @saas-core/playground dev",
     "build": "turbo run build",
     "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,css,md}\"",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "test:play": "turbo run test --filter=playground",
     "test:ui": "turbo run test --filter=@saas-core/core-ui",
-    "test:core": "turbo run test --filter=@saas-core/core"
+    "test:core": "turbo run test --filter=@saas-core/core",
+    "check-all": "pnpm run format:check && pnpm run lint && pnpm run typecheck",
+    "fix-all": "pnpm run format && pnpm run lint:fix && pnpm run check-all"
   },
   "devDependencies": {
     "prettier": "^3.5.3",
