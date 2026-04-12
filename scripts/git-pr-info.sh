@@ -20,4 +20,4 @@ git status --short
 
 echo ""
 echo "=== COMMITS_AHEAD ==="
-git log --oneline "${MAIN_BRANCH}..HEAD"
+git log --oneline "origin/${MAIN_BRANCH}..HEAD"
