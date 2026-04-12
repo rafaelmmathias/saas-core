@@ -1,25 +1,20 @@
 import type { ThemeConfig } from './types';
 
-const DEFAULT_CONFIG: ThemeConfig = {
-  activePreset: 'default',
-  mode: 'system',
-};
-
 const STORAGE_KEY = 'saas-core-theme';
 
-export function loadThemeConfig(): ThemeConfig {
-  if (typeof window === 'undefined') return DEFAULT_CONFIG;
+export function loadThemeConfig(): Partial<ThemeConfig> {
+  if (typeof window === 'undefined') return {};
 
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     if (stored) {
-      return { ...DEFAULT_CONFIG, ...JSON.parse(stored) };
+      return JSON.parse(stored) as Partial<ThemeConfig>;
     }
   } catch {
     // Ignore parse errors
   }
 
-  return DEFAULT_CONFIG;
+  return {};
 }
 
 export function saveThemeConfig(config: ThemeConfig): void {

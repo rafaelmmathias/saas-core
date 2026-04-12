@@ -5,6 +5,10 @@
   "scripts": {
     "dev": "turbo run dev",
     "play": "pnpm --filter @saas-core/playground dev",
+    "planner:dev": "pnpm --filter @saas-core/planner dev",
+    "planner:build": "pnpm --filter @saas-core/planner build",
+    "planner:lint": "pnpm --filter @saas-core/planner lint",
+    "planner:typecheck": "pnpm --filter @saas-core/planner typecheck",
     "build": "turbo run build",
     "lint": "turbo run lint",
     "lint:fix": "turbo run lint:fix",

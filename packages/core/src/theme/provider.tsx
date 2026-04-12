@@ -77,7 +77,12 @@ export function ThemeProvider({
 
   const [config, setConfig] = useState<ThemeConfig>(() => {
     const loaded = loadThemeConfig();
-    return { ...defaultConfig, ...loaded };
+    return {
+      activePreset: 'default',
+      mode: 'system',
+      ...defaultConfig,
+      ...loaded,
+    };
   });
 
   const [systemMode, setSystemMode] = useState<'light' | 'dark'>(getSystemMode);

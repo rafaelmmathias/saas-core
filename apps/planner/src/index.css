@@ -1,0 +1,233 @@
+@import 'tailwindcss';
+@plugin 'tailwindcss-animate';
+@source "../../../packages/ui/core-ui/src";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-sans-value);
+  --font-mono: var(--font-mono-value);
+  --font-display: var(--font-display-value);
+  --animate-page-in: page-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Editorial Journal — ivory paper, ink typography, vermillion accent */
+:root {
+  --background: 38 36% 96%;
+  --foreground: 25 18% 11%;
+  --card: 40 40% 98%;
+  --card-foreground: 25 18% 11%;
+  --popover: 40 40% 98%;
+  --popover-foreground: 25 18% 11%;
+  --primary: 10 74% 46%;
+  --primary-foreground: 38 36% 97%;
+  --secondary: 35 22% 91%;
+  --secondary-foreground: 25 18% 11%;
+  --muted: 35 22% 92%;
+  --muted-foreground: 25 8% 40%;
+  --accent: 10 60% 94%;
+  --accent-foreground: 10 74% 32%;
+  --destructive: 0 72% 48%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 150 46% 38%;
+  --success-foreground: 0 0% 98%;
+  --border: 30 14% 84%;
+  --input: 30 14% 84%;
+  --ring: 10 74% 46%;
+  --radius: 0.25rem;
+  --chart-1: 10 74% 46%;
+  --chart-2: 38 70% 55%;
+  --chart-3: 25 18% 25%;
+  --chart-4: 150 46% 38%;
+  --chart-5: 200 40% 45%;
+  --sidebar-background: 38 36% 96%;
+  --sidebar-foreground: 25 18% 11%;
+  --sidebar-primary: 10 74% 46%;
+  --sidebar-primary-foreground: 38 36% 97%;
+  --sidebar-accent: 35 22% 91%;
+  --sidebar-accent-foreground: 25 18% 11%;
+  --sidebar-border: 30 14% 84%;
+  --sidebar-ring: 10 74% 46%;
+  --font-sans-value: 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono-value: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display-value: 'Instrument Serif', Georgia, serif;
+}
+
+.dark {
+  --background: 25 14% 8%;
+  --foreground: 38 30% 92%;
+  --card: 25 12% 11%;
+  --card-foreground: 38 30% 92%;
+  --popover: 25 12% 11%;
+  --popover-foreground: 38 30% 92%;
+  --primary: 12 82% 62%;
+  --primary-foreground: 25 14% 8%;
+  --secondary: 25 10% 16%;
+  --secondary-foreground: 38 30% 92%;
+  --muted: 25 10% 16%;
+  --muted-foreground: 35 12% 60%;
+  --accent: 12 35% 20%;
+  --accent-foreground: 12 82% 78%;
+  --destructive: 0 65% 52%;
+  --destructive-foreground: 0 0% 98%;
+  --success: 150 55% 55%;
+  --success-foreground: 0 0% 98%;
+  --border: 25 10% 20%;
+  --input: 25 10% 20%;
+  --ring: 12 82% 62%;
+  --radius: 0.25rem;
+  --chart-1: 12 82% 62%;
+  --chart-2: 38 70% 60%;
+  --chart-3: 38 30% 80%;
+  --chart-4: 150 55% 55%;
+  --chart-5: 200 50% 60%;
+  --sidebar-background: 25 14% 8%;
+  --sidebar-foreground: 38 30% 92%;
+  --sidebar-primary: 12 82% 62%;
+  --sidebar-primary-foreground: 25 14% 8%;
+  --sidebar-accent: 25 10% 16%;
+  --sidebar-accent-foreground: 38 30% 92%;
+  --sidebar-border: 25 10% 20%;
+  --sidebar-ring: 12 82% 62%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html,
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans-value);
+  font-feature-settings: 'ss01', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Paper grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+.dark body::before {
+  opacity: 0.08;
+  mix-blend-mode: screen;
+}
+
+.font-display {
+  font-family: var(--font-display-value);
+  font-feature-settings: 'ss01';
+  letter-spacing: -0.02em;
+}
+.font-mono {
+  font-family: var(--font-mono-value);
+}
+
+/* Editorial hairline rules */
+.rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsl(var(--border)) 12%,
+    hsl(var(--border)) 88%,
+    transparent
+  );
+}
+
+/* Strike-through for completed tasks */
+.task-strike {
+  position: relative;
+}
+.task-strike::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left;
+  animation: strike 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes strike {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+main > * {
+  animation: page-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
