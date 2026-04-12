@@ -15,6 +15,11 @@
     "format": {},
     "typecheck": {
       "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "cache": true
     }
   }
 }

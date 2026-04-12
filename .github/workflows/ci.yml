@@ -33,6 +33,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Tests
+        run: pnpm test
+
   # ── 2. Build only affected apps (Turbo resolves the dep graph) ──────────────
   # --filter=[before]... means: packages changed since the previous commit on
   # main, PLUS any app that depends on them — no manual path globs needed.

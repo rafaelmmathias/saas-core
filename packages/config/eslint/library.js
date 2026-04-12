@@ -16,4 +16,12 @@ export default [
       'saas-core/no-top-level-side-effects': 'error',
     },
   },
+  {
+    // Test files use top-level describe/it/jest.mock() by design — the rule
+    // does not apply inside __tests__ directories.
+    files: ['**/__tests__/**'],
+    rules: {
+      'saas-core/no-top-level-side-effects': 'off',
+    },
+  },
 ];
