@@ -6,8 +6,9 @@ dist
 .env.*
 !.env.example
 
-# Claude Code
-.claude/
+# Claude Code — local settings stay private, shared commands are versioned
+.claude/*
+!.claude/commands
 
 # Temp files
 _tmp_*

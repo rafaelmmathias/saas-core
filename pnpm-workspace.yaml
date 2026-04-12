@@ -1,6 +1,10 @@
 packages:
   - "apps/*"
-  - "packages/*"
+  - "packages/core"
+  - "packages/config/*"
+  - "packages/ui/*"
+  - "packages/features/*"
+  - "packages/modules/*"
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver

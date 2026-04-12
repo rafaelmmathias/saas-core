@@ -1,2 +1,2 @@
-import base from '@saas-core/config-eslint/base';
-export default [...base];
+import library from '@saas-core/config-eslint/library';
+export default [...library];

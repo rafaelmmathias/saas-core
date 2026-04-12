@@ -5,7 +5,9 @@
   "type": "module",
   "exports": {
     "./base": "./base.js",
-    "./react": "./react.js"
+    "./react": "./react.js",
+    "./library": "./library.js",
+    "./library-react": "./library-react.js"
   },
   "dependencies": {
     "@eslint/js": "^9.21.0",

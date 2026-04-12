@@ -3,35 +3,28 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-  Alert,
-  AlertDescription,
-  AlertTitle,
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  Badge,
-  Button,
-  Checkbox,
-  Combobox,
-  DatePicker,
+} from '@saas-core/core-ui/components/accordion';
+import { Alert, AlertDescription, AlertTitle } from '@saas-core/core-ui/components/alert';
+import { Avatar, AvatarFallback, AvatarImage } from '@saas-core/core-ui/components/avatar';
+import { Badge } from '@saas-core/core-ui/components/badge';
+import { Button } from '@saas-core/core-ui/components/button';
+import { Checkbox } from '@saas-core/core-ui/components/checkbox';
+import { Combobox } from '@saas-core/core-ui/components/combobox';
+import { DatePicker } from '@saas-core/core-ui/components/date-picker';
+import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  Input,
-  Skeleton,
-  Slider,
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-  Toggle,
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@saas-core/core-ui';
+} from '@saas-core/core-ui/components/dialog';
+import { Input } from '@saas-core/core-ui/components/input';
+import { Skeleton } from '@saas-core/core-ui/components/skeleton';
+import { Slider } from '@saas-core/core-ui/components/slider';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@saas-core/core-ui/components/tabs';
+import { Toggle } from '@saas-core/core-ui/components/toggle';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@saas-core/core-ui/components/tooltip';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

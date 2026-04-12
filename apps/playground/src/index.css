@@ -1,6 +1,6 @@
 @import 'tailwindcss';
 @plugin 'tailwindcss-animate';
-@source "../../../packages/core-ui/src";
+@source "../../../packages/ui/core-ui/src";
 
 @custom-variant dark (&:is(.dark *));
 
