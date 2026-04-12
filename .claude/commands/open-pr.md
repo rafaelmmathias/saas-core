@@ -74,19 +74,27 @@ Rules:
 
 ## Step 5 — Show PR preview and confirm
 
-Print the preview block:
+Print the preview using this markdown layout (render it as markdown, not inside a code block):
 
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PR PREVIEW
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Title:  <generated title>
-Target: main ← <current branch>
-Changes: <DIFF_STAT value, e.g. "11 files changed, 284 insertions(+), 45 deletions(-)">
+---
 
-<full description>
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
+## PR Preview
+
+| Field | Value |
+| --- | --- |
+| **Title** | `<generated title>` |
+| **Target** | `<current branch>` → `main` |
+| **Changes** | `<DIFF_STAT value>` |
+
+## Summary
+
+- bullet per logical change (group related commits, not one per commit)
+
+## Test plan
+
+- [ ] what a reviewer should manually verify
+
+---
 
 Ask: "Does this look good? Type **yes** to create the PR, or describe any changes you want."
 
