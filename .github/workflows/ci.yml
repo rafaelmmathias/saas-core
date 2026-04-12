@@ -7,6 +7,7 @@ on:
     branches: [main]
 
 jobs:
+  # ── 1. Always runs on every push and PR ─────────────────────────────────────
   check:
     name: Typecheck & Lint
     runs-on: ubuntu-latest
@@ -31,3 +32,90 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+  # ── 2. Build only affected apps (Turbo resolves the dep graph) ──────────────
+  # --filter=[before]... means: packages changed since the previous commit on
+  # main, PLUS any app that depends on them — no manual path globs needed.
+  build:
+    name: Build affected apps
+    runs-on: ubuntu-latest
+    needs: check
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      playground: ${{ steps.detect.outputs.playground }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so Turbo can resolve any SHA
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build affected apps
+        run: |
+          BEFORE="${{ github.event.before }}"
+          if [[ "$BEFORE" == "0000000000000000000000000000000000000000" ]]; then
+            # First push to branch — build everything
+            pnpm exec turbo run build
+          else
+            # Build only what changed + their dependents
+            pnpm exec turbo run build "--filter=[$BEFORE]..."
+          fi
+
+      - name: Detect which app dists were produced
+        id: detect
+        run: |
+          echo "playground=$([[ -d apps/playground/dist ]] && echo true || echo false)" >> $GITHUB_OUTPUT
+          # Add more apps here as they are created:
+          # echo "myapp=$([[ -d apps/myapp/dist ]] && echo true || echo false)" >> $GITHUB_OUTPUT
+
+      - name: Upload playground dist
+        if: steps.detect.outputs.playground == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: playground-dist
+          path: apps/playground/dist
+          retention-days: 1
+
+  # ── 3a. Playground — deploy to Vercel ───────────────────────────────────────
+  # Skipped automatically if Turbo did not build the playground.
+  deploy-playground:
+    name: Deploy Playground → Vercel
+    runs-on: ubuntu-latest
+    needs: build
+    if: needs.build.outputs.playground == 'true'
+
+    steps:
+      - name: Download dist
+        uses: actions/download-artifact@v4
+        with:
+          name: playground-dist
+          path: dist
+
+      - name: Deploy to Vercel
+        run: npx vercel deploy dist --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+  # ── Future app example ───────────────────────────────────────────────────────
+  # deploy-myapp:
+  #   name: Deploy My App → VPS
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   if: needs.build.outputs.myapp == 'true'
+  #   steps:
+  #     - uses: actions/download-artifact@v4
+  #       with: { name: myapp-dist, path: dist }
+  #     - name: Deploy via SSH
+  #       ...
