@@ -1,7 +1,6 @@
 {
   "extends": "@saas-core/config-ts/react",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },

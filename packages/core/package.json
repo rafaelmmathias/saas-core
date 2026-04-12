@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "clsx": "^2.1.0",
-    "i18next": "^24.2.0",
-    "react-i18next": "^15.4.0",
+    "i18next": "^26.0.4",
+    "react-i18next": "^17.0.2",
     "tailwind-merge": "^3.0.0"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "tsup": "^8.4.0",
-    "typescript": "^5.7.0",
+    "typescript": "^6.0.2",
     "eslint": "^9.21.0"
   },
   "peerDependencies": {
