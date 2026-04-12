@@ -104,7 +104,23 @@ If the user requests changes, revise and reprint the preview. Repeat until appro
 
 ## Step 6 — Create the PR
 
-Once approved, run:
+Once approved:
+
+**6a.** Check whether the branch exists on the remote:
+
+```bash
+git ls-remote --exit-code origin <branch>
+```
+
+If the command exits non-zero (branch not on remote), push it first:
+
+```bash
+git push -u origin <branch>
+```
+
+Tell the user: "Pushing branch to remote…" before running it.
+
+**6b.** Create the PR:
 
 ```bash
 gh pr create \
@@ -121,14 +137,14 @@ PRBODY
 
 Common failure causes:
 - Not authenticated → tell user to run `gh auth login`
-- Branch not pushed to remote → tell user to run `git push -u origin <branch>` first
 - PR already exists for this branch → show the existing PR URL
 
 ---
 
 ## Constraints
 
-- **Never** run `git push`, `git merge`, or modify any repo files
+- **Never** run `git merge`, or modify any repo files
+- Only push the branch (Step 6a) if it does not yet exist on the remote — never force-push
 - Target base branch is always `main`
 - Do not add labels, reviewers, or assignees unless the user explicitly asks
 - Do not re-run the helper script after Step 1 — use only the data already collected
