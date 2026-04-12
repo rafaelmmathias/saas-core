@@ -10,6 +10,8 @@ import { Badge } from '@saas-core/core-ui/components/badge';
 import { Button } from '@saas-core/core-ui/components/button';
 import { Checkbox } from '@saas-core/core-ui/components/checkbox';
 import { Combobox } from '@saas-core/core-ui/components/combobox';
+import { ColorEditor } from '@saas-core/core-ui/components/composite/color-editor';
+import { ColorSwatch } from '@saas-core/core-ui/components/composite/color-swatch';
 import { DatePicker } from '@saas-core/core-ui/components/date-picker';
 import {
   Dialog,
@@ -20,6 +22,8 @@ import {
   DialogTrigger,
 } from '@saas-core/core-ui/components/dialog';
 import { Input } from '@saas-core/core-ui/components/input';
+import { InputFile } from '@saas-core/core-ui/components/input-file';
+import { Progress } from '@saas-core/core-ui/components/progress';
 import { Skeleton } from '@saas-core/core-ui/components/skeleton';
 import { Slider } from '@saas-core/core-ui/components/slider';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@saas-core/core-ui/components/tabs';

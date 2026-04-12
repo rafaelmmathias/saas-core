@@ -5,6 +5,7 @@ import { FormCheckbox } from '@saas-core/core-ui/form/form-checkbox';
 import { FormCombobox } from '@saas-core/core-ui/form/form-combobox';
 import { FormDatePicker } from '@saas-core/core-ui/form/form-datepicker';
 import { FormInput } from '@saas-core/core-ui/form/form-input';
+import { FormInputFile } from '@saas-core/core-ui/form/form-input-file';
 import { FormSlider } from '@saas-core/core-ui/form/form-slider';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
