@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { Routes, Route, Link, useLocation } from 'react-router';
 
 import { ComponentsPage } from '@/app/routes/components';
+import { DesignSystemPage } from '@/app/routes/design-system';
 import { FormsPage } from '@/app/routes/forms';
 import { I18nPage } from '@/app/routes/i18n';
 import { HomePage } from '@/app/routes/index';
@@ -47,6 +48,7 @@ function Navigation() {
           <div className="flex items-center gap-1">
             <NavLink to="/">{t('nav.home')}</NavLink>
             <NavLink to="/components">{t('nav.components')}</NavLink>
+            <NavLink to="/design-system">Design System</NavLink>
             <NavLink to="/forms">{t('nav.forms')}</NavLink>
             <NavLink to="/theming">{t('nav.theming')}</NavLink>
             <NavLink to="/i18n">{t('nav.i18n')}</NavLink>
@@ -73,7 +75,7 @@ export function App() {
   }
 
   return (
-    <ThemeProvider presets={[warmStudioPreset]} defaultConfig={{ activePreset: 'warm-studio' }}>
+    <ThemeProvider presets={[warmStudioPreset]} defaultConfig={{ activePreset: 'default' }}>
       <CurrencyProvider>
         <TooltipProvider>
           <div className="bg-background text-foreground min-h-screen">
@@ -82,6 +84,7 @@ export function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/components" element={<ComponentsPage />} />
+                <Route path="/design-system" element={<DesignSystemPage />} />
                 <Route path="/forms" element={<FormsPage />} />
                 <Route path="/theming" element={<ThemingPage />} />
                 <Route path="/i18n" element={<I18nPage />} />

@@ -55,7 +55,11 @@ export function Combobox({
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className={cn('w-full justify-between', className)}
+          className={cn(
+            'border-input focus-visible:ring-primary h-10 w-full justify-between rounded-lg px-3 py-2 pr-8 text-sm font-normal focus-visible:border-transparent focus-visible:ring-2',
+            !selectedLabel && 'text-muted-foreground',
+            className,
+          )}
           disabled={disabled}
         >
           {selectedLabel ?? placeholder}

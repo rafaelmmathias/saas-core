@@ -1,6 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
-import { defaultPreset } from './presets';
+import { defaultDarkTokens, defaultLightTokens, defaultPreset } from './presets';
 import { loadThemeConfig, saveThemeConfig } from './storage';
 import type { ThemeConfig, ThemeContextValue, ThemePreset, ThemeTokens } from './types';
 
@@ -95,8 +95,9 @@ export function ThemeProvider({
   );
 
   const tokens = useMemo<ThemeTokens>(() => {
-    const baseTokens = activePreset.tokens[resolvedMode];
-    return { ...baseTokens, ...config.customTokens };
+    const defaultBase = resolvedMode === 'dark' ? defaultDarkTokens : defaultLightTokens;
+    const presetTokens = activePreset.tokens[resolvedMode];
+    return { ...defaultBase, ...presetTokens, ...config.customTokens };
   }, [activePreset, resolvedMode, config.customTokens]);
 
   useEffect(() => {

@@ -9,4 +9,6 @@ export interface CurrencyContextValue {
   currency: CurrencyConfig;
   setCurrency: (currency: CurrencyConfig) => void;
   format: (amount: number, overrideCurrency?: Partial<CurrencyConfig>) => string;
+  formatCompact: (amount: number, overrideCurrency?: Partial<CurrencyConfig>) => string;
+  formatPercent: (value: number, decimals?: number) => string;
 }

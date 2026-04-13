@@ -40,8 +40,8 @@ export const warmStudioPreset: ThemePreset = {
       'sidebar-accent-foreground': '30 12% 12%',
       'sidebar-border': '35 15% 87%',
       'sidebar-ring': '20 72% 37%',
-      'font-sans': 'DM Sans',
-      'font-mono': 'DM Mono',
+      'font-sans': "'DM Sans', system-ui, sans-serif",
+      'font-mono': "'DM Mono', ui-monospace, monospace",
     },
     dark: {
       background: '28 12% 9%',
@@ -79,8 +79,8 @@ export const warmStudioPreset: ThemePreset = {
       'sidebar-accent-foreground': '35 30% 92%',
       'sidebar-border': '28 10% 20%',
       'sidebar-ring': '22 65% 56%',
-      'font-sans': 'DM Sans',
-      'font-mono': 'DM Mono',
+      'font-sans': "'DM Sans', system-ui, sans-serif",
+      'font-mono': "'DM Mono', ui-monospace, monospace",
     },
   },
 };
