@@ -19,7 +19,7 @@
     "test:play": "turbo run test --filter=playground",
     "test:ui": "turbo run test --filter=@saas-core/core-ui",
     "test:core": "turbo run test --filter=@saas-core/core",
-    "check-all": "pnpm run format:check && pnpm run lint && pnpm run typecheck",
+    "check-all": "pnpm run format:check && pnpm run lint && pnpm run typecheck && pnpm run test",
     "fix-all": "pnpm run format && pnpm run lint:fix && pnpm run check-all"
   },
   "devDependencies": {

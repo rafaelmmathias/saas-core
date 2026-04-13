@@ -6,12 +6,15 @@
   "sideEffects": false,
   "exports": {
     "./components/*": "./src/components/ui/*.tsx",
-    "./form/*": "./src/form/*.tsx",
+    "./components/charts/*": "./src/components/charts/*.tsx",
     "./components/composite/*": "./src/components/composite/*.tsx",
+    "./form/*": "./src/form/*.tsx",
     "./form": "./src/form/index.ts",
     "./lib/color": "./src/lib/color.ts",
     "./providers": "./src/providers/index.ts",
-    "./hooks": "./src/hooks/index.ts"
+    "./hooks": "./src/hooks/index.ts",
+    "./styles/globals.css": "./src/styles/globals.css",
+    "./styles/theme-default.css": "./src/styles/theme-default.css"
   },
   "scripts": {
     "build": "tsc --noEmit",
@@ -24,6 +27,7 @@
   "dependencies": {
     "@hookform/resolvers": "^4.1.0",
     "@saas-core/core": "workspace:*",
+    "@tanstack/react-table": "^8.20.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.0",
     "cmdk": "^1.1.1",
@@ -33,6 +37,7 @@
     "radix-ui": "^1.4.3",
     "react-day-picker": "^9.14.0",
     "react-hook-form": "^7.54.0",
+    "recharts": "^2.15.0",
     "tailwind-merge": "^3.0.0",
     "vaul": "^1.1.2",
     "zod": "^3.24.0"

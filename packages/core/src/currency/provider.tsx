@@ -30,9 +30,32 @@ export function CurrencyProvider({ children, defaultCurrency }: CurrencyProvider
     [currency],
   );
 
+  const formatCompact = useCallback(
+    (amount: number, overrideCurrency?: Partial<CurrencyConfig>) => {
+      const config = { ...currency, ...overrideCurrency };
+      return new Intl.NumberFormat(config.locale, {
+        style: 'currency',
+        currency: config.code,
+        notation: 'compact',
+        maximumFractionDigits: 1,
+      }).format(amount);
+    },
+    [currency],
+  );
+
+  const formatPercent = useCallback(
+    (value: number, decimals = 1) =>
+      new Intl.NumberFormat(currency.locale, {
+        style: 'percent',
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+      }).format(value),
+    [currency.locale],
+  );
+
   const value = useMemo<CurrencyContextValue>(
-    () => ({ currency, setCurrency, format }),
-    [currency, format],
+    () => ({ currency, setCurrency, format, formatCompact, formatPercent }),
+    [currency, format, formatCompact, formatPercent],
   );
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>;

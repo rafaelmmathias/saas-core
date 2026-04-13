@@ -1,0 +1,255 @@
+/*
+ * @saas-core/core-ui — theme-default.css
+ *
+ * Single source of truth for the default design-system tokens.
+ * Aligned with the `design` skill specification.
+ *
+ * Imported by apps (directly or via globals.css). Apps can override any
+ * token at runtime through ThemeProvider presets — this file provides the
+ * baseline values every token must have.
+ */
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-bg: hsl(var(--primary-bg));
+  --color-primary-text: hsl(var(--primary-text));
+  --color-primary-light: hsl(var(--primary-light));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-danger: hsl(var(--danger));
+  --color-danger-foreground: hsl(var(--danger-foreground));
+  --color-danger-bg: hsl(var(--danger-bg));
+  --color-danger-text: hsl(var(--danger-text));
+
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-success-bg: hsl(var(--success-bg));
+  --color-success-text: hsl(var(--success-text));
+
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
+  --color-warning-bg: hsl(var(--warning-bg));
+  --color-warning-text: hsl(var(--warning-text));
+
+  --color-purple: hsl(var(--purple));
+  --color-purple-bg: hsl(var(--purple-bg));
+  --color-purple-text: hsl(var(--purple-text));
+  --color-cyan: hsl(var(--cyan));
+  --color-cyan-bg: hsl(var(--cyan-bg));
+  --color-pink: hsl(var(--pink));
+  --color-lime: hsl(var(--lime));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+  --color-chart-6: hsl(var(--chart-6));
+  --color-chart-7: hsl(var(--chart-7));
+  --color-chart-8: hsl(var(--chart-8));
+
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-card-hover: var(--shadow-card-hover);
+  --shadow-tooltip: var(--shadow-tooltip);
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 220 39% 11%;
+
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
+  --primary-bg: 214 100% 97%;
+  --primary-text: 224 76% 48%;
+  --primary-light: 213 94% 78%;
+
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 39% 11%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --danger: 0 84% 60%;
+  --danger-foreground: 0 0% 100%;
+  --danger-bg: 0 86% 97%;
+  --danger-text: 0 74% 42%;
+
+  --success: 160 84% 39%;
+  --success-foreground: 0 0% 100%;
+  --success-bg: 143 85% 96%;
+  --success-text: 142 72% 29%;
+
+  --warning: 38 92% 50%;
+  --warning-foreground: 0 0% 100%;
+  --warning-bg: 48 100% 96%;
+  --warning-text: 32 81% 29%;
+
+  --purple: 258 90% 66%;
+  --purple-bg: 270 100% 98%;
+  --purple-text: 262 83% 58%;
+  --cyan: 189 94% 43%;
+  --cyan-bg: 183 100% 96%;
+  --pink: 330 81% 60%;
+  --lime: 84 81% 44%;
+
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --accent: 220 14% 96%;
+  --accent-foreground: 220 39% 11%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 39% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 39% 11%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --ring: 217 91% 60%;
+  --radius: 0.5rem;
+
+  --chart-1: 217 91% 60%;
+  --chart-2: 160 84% 39%;
+  --chart-3: 38 92% 50%;
+  --chart-4: 0 84% 60%;
+  --chart-5: 258 90% 66%;
+  --chart-6: 330 81% 60%;
+  --chart-7: 189 94% 43%;
+  --chart-8: 84 81% 44%;
+
+  --sidebar-background: 0 0% 100%;
+  --sidebar-foreground: 220 39% 11%;
+  --sidebar-primary: 217 91% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 220 14% 96%;
+  --sidebar-accent-foreground: 220 39% 11%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217 91% 60%;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  --shadow-tooltip: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'JetBrains Mono', monospace;
+}
+
+.dark {
+  --background: 220 26% 8%;
+  --foreground: 220 9% 96%;
+
+  --primary: 213 94% 68%;
+  --primary-foreground: 220 26% 8%;
+  --primary-bg: 217 91% 18%;
+  --primary-text: 213 94% 78%;
+  --primary-light: 213 94% 78%;
+
+  --secondary: 220 14% 16%;
+  --secondary-foreground: 220 9% 96%;
+
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 98%;
+  --danger: 0 72% 51%;
+  --danger-foreground: 0 0% 98%;
+  --danger-bg: 0 63% 18%;
+  --danger-text: 0 93% 82%;
+
+  --success: 160 84% 45%;
+  --success-foreground: 160 84% 10%;
+  --success-bg: 160 84% 14%;
+  --success-text: 143 85% 76%;
+
+  --warning: 38 92% 58%;
+  --warning-foreground: 38 92% 10%;
+  --warning-bg: 32 81% 18%;
+  --warning-text: 48 96% 80%;
+
+  --purple: 258 90% 72%;
+  --purple-bg: 262 83% 20%;
+  --purple-text: 270 100% 88%;
+  --cyan: 189 94% 55%;
+  --cyan-bg: 189 94% 16%;
+  --pink: 330 81% 68%;
+  --lime: 84 81% 58%;
+
+  --muted: 220 14% 16%;
+  --muted-foreground: 220 9% 64%;
+  --accent: 220 14% 16%;
+  --accent-foreground: 220 9% 96%;
+  --popover: 220 26% 10%;
+  --popover-foreground: 220 9% 96%;
+  --card: 220 26% 10%;
+  --card-foreground: 220 9% 96%;
+  --border: 220 14% 20%;
+  --input: 220 14% 20%;
+  --ring: 213 94% 68%;
+
+  --chart-1: 213 94% 68%;
+  --chart-2: 160 84% 45%;
+  --chart-3: 38 92% 58%;
+  --chart-4: 0 72% 61%;
+  --chart-5: 258 90% 72%;
+  --chart-6: 330 81% 68%;
+  --chart-7: 189 94% 55%;
+  --chart-8: 84 81% 58%;
+
+  --sidebar-background: 220 26% 10%;
+  --sidebar-foreground: 220 9% 96%;
+  --sidebar-primary: 213 94% 68%;
+  --sidebar-primary-foreground: 220 26% 8%;
+  --sidebar-accent: 220 14% 16%;
+  --sidebar-accent-foreground: 220 9% 96%;
+  --sidebar-border: 220 14% 20%;
+  --sidebar-ring: 213 94% 68%;
+
+  --shadow-card: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+  --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.5);
+  --shadow-tooltip: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}

@@ -40,8 +40,8 @@ export const editorialPreset: ThemePreset = {
       'sidebar-accent-foreground': '25 18% 11%',
       'sidebar-border': '30 14% 84%',
       'sidebar-ring': '10 74% 46%',
-      'font-sans': 'IBM Plex Sans',
-      'font-mono': 'JetBrains Mono',
+      'font-sans': "'IBM Plex Sans', system-ui, sans-serif",
+      'font-mono': "'JetBrains Mono', ui-monospace, monospace",
     },
     dark: {
       background: '25 14% 8%',
@@ -79,8 +79,8 @@ export const editorialPreset: ThemePreset = {
       'sidebar-accent-foreground': '38 30% 92%',
       'sidebar-border': '25 10% 20%',
       'sidebar-ring': '12 82% 62%',
-      'font-sans': 'IBM Plex Sans',
-      'font-mono': 'JetBrains Mono',
+      'font-sans': "'IBM Plex Sans', system-ui, sans-serif",
+      'font-mono': "'JetBrains Mono', ui-monospace, monospace",
     },
   },
 };
