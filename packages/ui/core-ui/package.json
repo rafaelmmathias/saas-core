@@ -15,6 +15,7 @@
     "./providers": "./src/theme/index.ts",
     "./hooks/useBreakpoint": "./src/hooks/useBreakpoint.ts",
     "./hooks/useResponsive": "./src/hooks/useResponsive.ts",
+    "./modules/login-page": "./src/modules/login-page/index.ts",
     "./styles/globals.css": "./src/styles/globals.css",
     "./styles/theme-default.css": "./src/styles/theme-default.css"
   },
