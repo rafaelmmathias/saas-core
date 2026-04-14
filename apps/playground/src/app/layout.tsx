@@ -13,6 +13,7 @@ import { DesignSystemPage } from '@/app/routes/design-system';
 import { FormsPage } from '@/app/routes/forms';
 import { I18nPage } from '@/app/routes/i18n';
 import { HomePage } from '@/app/routes/index';
+import { LoginShowcasePage } from '@/app/routes/login';
 import { ThemingPage } from '@/app/routes/theming';
 import { setupI18n } from '@/config/i18n';
 import { warmStudioPreset } from '@/config/theme-presets';
@@ -48,6 +49,12 @@ function Navigation() {
       isActive: location.pathname === '/theming',
     },
     { id: 'i18n', href: '/i18n', label: t('nav.i18n'), isActive: location.pathname === '/i18n' },
+    {
+      id: 'login',
+      href: '/login',
+      label: t('nav.login'),
+      isActive: location.pathname === '/login',
+    },
   ];
 
   const renderLink: RenderLink = (item, { className, onClick }) => (
@@ -98,6 +105,7 @@ export function App() {
                 <Route path="/forms" element={<FormsPage />} />
                 <Route path="/theming" element={<ThemingPage />} />
                 <Route path="/i18n" element={<I18nPage />} />
+                <Route path="/login" element={<LoginShowcasePage />} />
               </Routes>
             </main>
           </div>

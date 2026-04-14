@@ -8,7 +8,8 @@
     "components": "Components",
     "forms": "Forms",
     "theming": "Theming",
-    "i18n": "Internationalization"
+    "i18n": "Internationalization",
+    "login": "Login Page"
   },
   "home": {
     "welcome": "Welcome to SaaS Core",
