@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import { breakpoints } from '../lib/breakpoints';
-import type { Breakpoint } from '../lib/breakpoints';
+import { breakpoints } from '../theme/breakpoints';
+import type { Breakpoint } from '../theme/breakpoints';
 
 function getCurrentBreakpoint(): Breakpoint {
   if (typeof window === 'undefined') return 'sm';

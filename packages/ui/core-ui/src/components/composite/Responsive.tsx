@@ -1,7 +1,7 @@
 import { createContext, useContext } from 'react';
 
 import { useBreakpoint } from '../../hooks/useBreakpoint';
-import type { Breakpoint } from '../../lib/breakpoints';
+import type { Breakpoint } from '../../theme/breakpoints';
 
 type BreakpointState = ReturnType<typeof useBreakpoint>;
 
