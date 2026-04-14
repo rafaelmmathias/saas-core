@@ -5,7 +5,6 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    "./theme": "./src/theme/index.ts",
     "./i18n": "./src/i18n/index.ts",
     "./currency": "./src/currency/index.ts",
     "./helpers": "./src/helpers/index.ts"

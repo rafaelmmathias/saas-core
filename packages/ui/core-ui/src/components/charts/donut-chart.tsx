@@ -15,8 +15,8 @@ export interface DonutChartDatum {
 interface DonutChartProps {
   data: DonutChartDatum[];
   height?: number;
-  innerRadius?: number;
-  outerRadius?: number;
+  innerRadius?: number | string;
+  outerRadius?: number | string;
   showLegend?: boolean;
   className?: string;
 }
@@ -24,15 +24,15 @@ interface DonutChartProps {
 export function DonutChart({
   data,
   height = 280,
-  innerRadius = 55,
-  outerRadius = 90,
+  innerRadius = '45%',
+  outerRadius = '70%',
   showLegend = true,
   className,
 }: DonutChartProps) {
   return (
     <div className={className} style={{ width: '100%', height }}>
       <div className="flex h-full items-center gap-4">
-        <div className="flex-1">
+        <div className="flex-1" style={{ height }}>
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
@@ -57,7 +57,7 @@ export function DonutChart({
             {data.map((entry, i) => (
               <li key={entry.name} className="flex items-center gap-2">
                 <span
-                  className="inline-block size-3 rounded-full"
+                  className="inline-block size-3 shrink-0 rounded-full"
                   style={{ backgroundColor: entry.color ?? getChartColor(i) }}
                 />
                 <span className="text-muted-foreground">{entry.name}</span>

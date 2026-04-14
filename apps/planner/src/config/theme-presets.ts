@@ -1,4 +1,4 @@
-import type { ThemePreset } from '@saas-core/core/theme';
+import type { ThemePreset } from '@saas-core/core-ui/theme';
 
 export const editorialPreset: ThemePreset = {
   name: 'editorial',

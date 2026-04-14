@@ -5,14 +5,16 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
+    "./theme": "./src/theme/index.ts",
     "./components/*": "./src/components/ui/*.tsx",
     "./components/charts/*": "./src/components/charts/*.tsx",
     "./components/composite/*": "./src/components/composite/*.tsx",
     "./form/*": "./src/form/*.tsx",
     "./form": "./src/form/index.ts",
     "./lib/color": "./src/lib/color.ts",
-    "./providers": "./src/providers/index.ts",
-    "./hooks": "./src/hooks/index.ts",
+    "./providers": "./src/theme/index.ts",
+    "./hooks/useBreakpoint": "./src/hooks/useBreakpoint.ts",
+    "./hooks/useResponsive": "./src/hooks/useResponsive.ts",
     "./styles/globals.css": "./src/styles/globals.css",
     "./styles/theme-default.css": "./src/styles/theme-default.css"
   },

@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@saas-core/core-ui/components/button';
-import { Form } from '@saas-core/core-ui/components/form';
+import { Form } from '@saas-core/core-ui/form/form';
 import { FormCheckbox } from '@saas-core/core-ui/form/form-checkbox';
 import { FormCombobox } from '@saas-core/core-ui/form/form-combobox';
 import { FormDatePicker } from '@saas-core/core-ui/form/form-datepicker';

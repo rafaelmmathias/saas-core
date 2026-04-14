@@ -1,10 +1,10 @@
-import { useTheme } from '@saas-core/core/theme';
-import type { ThemeTokens } from '@saas-core/core/theme';
 import { Button } from '@saas-core/core-ui/components/button';
 import { ColorEditor } from '@saas-core/core-ui/components/composite/color-editor';
 import { ColorSwatch } from '@saas-core/core-ui/components/composite/color-swatch';
 import { Label } from '@saas-core/core-ui/components/label';
 import { Slider } from '@saas-core/core-ui/components/slider';
+import type { ThemeTokens } from '@saas-core/core-ui/theme';
+import { useTheme } from '@saas-core/core-ui/theme';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 

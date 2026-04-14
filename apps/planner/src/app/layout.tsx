@@ -1,6 +1,6 @@
-import { ThemeProvider, useTheme } from '@saas-core/core/theme';
 import { Button } from '@saas-core/core-ui/components/button';
 import { TooltipProvider } from '@saas-core/core-ui/components/tooltip';
+import { ThemeProvider, useTheme } from '@saas-core/core-ui/theme';
 import { Moon, Sun } from 'lucide-react';
 import { Route, Routes } from 'react-router';
 
