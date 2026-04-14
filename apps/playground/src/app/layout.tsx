@@ -1,5 +1,7 @@
 import { CurrencyProvider } from '@saas-core/core/currency';
 import { ThemeProvider } from '@saas-core/core/theme';
+import { NavBar } from '@saas-core/core-ui/components/composite/navbar';
+import type { NavItem, RenderLink } from '@saas-core/core-ui/components/composite/navbar';
 import { TooltipProvider } from '@saas-core/core-ui/components/tooltip';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -14,49 +16,55 @@ import { ThemingPage } from '@/app/routes/theming';
 import { setupI18n } from '@/config/i18n';
 import { warmStudioPreset } from '@/config/theme-presets';
 
-function NavLink({ to, children }: { to: string; children: React.ReactNode }) {
-  const location = useLocation();
-  const isActive = location.pathname === to;
-
-  return (
-    <Link
-      to={to}
-      className={`px-3 pb-px text-sm transition-colors ${
-        isActive
-          ? 'text-foreground border-primary border-b-2 font-medium'
-          : 'text-muted-foreground hover:text-foreground'
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
-
 function Navigation() {
   const { t } = useTranslation();
+  const location = useLocation();
 
-  return (
-    <nav className="border-primary/20 bg-card border-b">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-14 items-center justify-between">
-          <div className="flex items-center gap-1">
-            <span className="font-display text-foreground text-xl font-bold italic">SaaS Core</span>
-            <span className="font-display text-muted-foreground text-xl font-light">
-              &nbsp;Playground
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <NavLink to="/">{t('nav.home')}</NavLink>
-            <NavLink to="/components">{t('nav.components')}</NavLink>
-            <NavLink to="/design-system">Design System</NavLink>
-            <NavLink to="/forms">{t('nav.forms')}</NavLink>
-            <NavLink to="/theming">{t('nav.theming')}</NavLink>
-            <NavLink to="/i18n">{t('nav.i18n')}</NavLink>
-          </div>
-        </div>
-      </div>
-    </nav>
+  const items: NavItem[] = [
+    { id: 'home', href: '/', label: t('nav.home'), isActive: location.pathname === '/' },
+    {
+      id: 'components',
+      href: '/components',
+      label: t('nav.components'),
+      isActive: location.pathname === '/components',
+    },
+    {
+      id: 'design',
+      href: '/design-system',
+      label: 'Design System',
+      isActive: location.pathname === '/design-system',
+    },
+    {
+      id: 'forms',
+      href: '/forms',
+      label: t('nav.forms'),
+      isActive: location.pathname === '/forms',
+    },
+    {
+      id: 'theming',
+      href: '/theming',
+      label: t('nav.theming'),
+      isActive: location.pathname === '/theming',
+    },
+    { id: 'i18n', href: '/i18n', label: t('nav.i18n'), isActive: location.pathname === '/i18n' },
+  ];
+
+  const renderLink: RenderLink = (item, { className, onClick }) => (
+    <Link key={item.id} to={item.href!} className={className} onClick={onClick}>
+      {item.label}
+    </Link>
   );
+
+  const brand = (
+    <>
+      <span className="font-display text-foreground text-xl font-bold italic">SaaS Core</span>
+      <span className="font-display text-muted-foreground text-xl font-light">
+        &nbsp;Playground
+      </span>
+    </>
+  );
+
+  return <NavBar brand={brand} items={items} renderLink={renderLink} />;
 }
 
 export function App() {

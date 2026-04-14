@@ -9,6 +9,7 @@ import { StatusCard } from '@saas-core/core-ui/components/composite/status-card'
 import { DataTable, type ColumnDef } from '@saas-core/core-ui/components/data-table';
 import { Input } from '@saas-core/core-ui/components/input';
 import { Progress } from '@saas-core/core-ui/components/progress';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@saas-core/core-ui/components/tabs';
 import { Toggle } from '@saas-core/core-ui/components/toggle';
 import {
   Activity,
@@ -176,7 +177,7 @@ export function DesignSystemPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)]">
+        <div className="border-border bg-card shadow-card rounded-lg border p-5">
           <h3 className="text-foreground mb-4 text-sm font-semibold">Receita vs Despesa</h3>
           <BarChart
             data={barData}
@@ -238,6 +239,62 @@ export function DesignSystemPage() {
           <Badge variant="outline">Outline</Badge>
         </div>
         <Progress value={72} label="Orçamento consumido" showPercentage />
+      </div>
+
+      <div className="space-y-6">
+        <SectionTitle title="Tabs" subtitle="Variantes line e default — full-width com scroll horizontal" />
+
+        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)] space-y-2">
+          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">Variant: line (padrão)</p>
+          <Tabs defaultValue="overview">
+            <TabsList variant="line">
+              <TabsTrigger value="overview">Visão Geral</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="reports">Relatórios</TabsTrigger>
+              <TabsTrigger value="notifications">Notificações</TabsTrigger>
+              <TabsTrigger value="settings">Configurações</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Visão Geral.</p>
+            </TabsContent>
+            <TabsContent value="analytics" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Analytics.</p>
+            </TabsContent>
+            <TabsContent value="reports" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Relatórios.</p>
+            </TabsContent>
+            <TabsContent value="notifications" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Notificações.</p>
+            </TabsContent>
+            <TabsContent value="settings" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Configurações.</p>
+            </TabsContent>
+          </Tabs>
+        </div>
+
+        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)] space-y-2">
+          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">Variant: default (pill/segment)</p>
+          <Tabs defaultValue="overview">
+            <TabsList variant="default">
+              <TabsTrigger value="overview">Visão Geral</TabsTrigger>
+              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="reports">Relatórios</TabsTrigger>
+              <TabsTrigger value="notifications">Notificações</TabsTrigger>
+            </TabsList>
+            <TabsContent value="overview" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Visão Geral.</p>
+            </TabsContent>
+            <TabsContent value="analytics" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Analytics.</p>
+            </TabsContent>
+            <TabsContent value="reports" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Relatórios.</p>
+            </TabsContent>
+            <TabsContent value="notifications" className="pt-4">
+              <p className="text-muted-foreground text-sm">Conteúdo da aba Notificações.</p>
+            </TabsContent>
+          </Tabs>
+        </div>
       </div>
     </div>
   );

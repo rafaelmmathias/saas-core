@@ -41,7 +41,7 @@ export function KpiCard({
   return (
     <div
       className={cn(
-        'border-border bg-card flex items-start justify-between rounded-lg border shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-card-hover)]',
+        'border-border bg-card shadow-card hover:shadow-card-hover flex items-start justify-between rounded-lg border transition-shadow',
         isSmall ? 'p-3' : 'p-5',
         className,
       )}
