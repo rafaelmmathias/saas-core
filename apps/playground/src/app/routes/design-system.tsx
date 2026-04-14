@@ -202,7 +202,7 @@ export function DesignSystemPage() {
             height={240}
           />
         </div>
-        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)]">
+        <div className="border-border bg-card shadow-card rounded-lg border p-5">
           <h3 className="text-foreground mb-4 text-sm font-semibold">Visitas diárias</h3>
           <AreaChart
             data={areaData}
