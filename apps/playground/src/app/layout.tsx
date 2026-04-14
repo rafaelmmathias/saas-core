@@ -1,8 +1,9 @@
 import { CurrencyProvider } from '@saas-core/core/currency';
-import { ThemeProvider } from '@saas-core/core/theme';
 import { NavBar } from '@saas-core/core-ui/components/composite/navbar';
 import type { NavItem, RenderLink } from '@saas-core/core-ui/components/composite/navbar';
 import { TooltipProvider } from '@saas-core/core-ui/components/tooltip';
+import { useResponsive } from '@saas-core/core-ui/hooks/useResponsive';
+import { ThemeProvider } from '@saas-core/core-ui/theme';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Routes, Route, Link, useLocation } from 'react-router';
@@ -63,8 +64,9 @@ function Navigation() {
       </span>
     </>
   );
-
-  return <NavBar brand={brand} items={items} renderLink={renderLink} />;
+  const { down, isTablet } = useResponsive();
+  const maxItems = down('md') || isTablet ? 3 : undefined;
+  return <NavBar brand={brand} items={items} renderLink={renderLink} maxItems={maxItems} />;
 }
 
 export function App() {

@@ -4,6 +4,7 @@ import { BarChart } from '@saas-core/core-ui/components/charts/bar-chart';
 import { DonutChart } from '@saas-core/core-ui/components/charts/donut-chart';
 import { LineChart } from '@saas-core/core-ui/components/charts/line-chart';
 import { KpiCard } from '@saas-core/core-ui/components/composite/kpi-card';
+import { Responsive } from '@saas-core/core-ui/components/composite/Responsive';
 import { SectionTitle } from '@saas-core/core-ui/components/composite/section-title';
 import { StatusCard } from '@saas-core/core-ui/components/composite/status-card';
 import { DataTable, type ColumnDef } from '@saas-core/core-ui/components/data-table';
@@ -241,11 +242,83 @@ export function DesignSystemPage() {
         <Progress value={72} label="Orçamento consumido" showPercentage />
       </div>
 
-      <div className="space-y-6">
-        <SectionTitle title="Tabs" subtitle="Variantes line e default — full-width com scroll horizontal" />
+      <div className="space-y-4">
+        <SectionTitle
+          title="Responsive"
+          subtitle="Conditional rendering based on the active breakpoint — uses matchMedia listeners, zero renders between breakpoints"
+        />
 
-        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)] space-y-2">
-          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">Variant: line (padrão)</p>
+        <Responsive>
+          <div className="border-border bg-card space-y-3 rounded-lg border p-5 shadow-[var(--shadow-card)]">
+            <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+              Current context
+            </p>
+            <Responsive.Mobile>
+              <Badge variant="warning">Mobile — below md (768px)</Badge>
+            </Responsive.Mobile>
+            <Responsive.Tablet>
+              <Badge variant="info">Tablet — md to lg (768–1023px)</Badge>
+            </Responsive.Tablet>
+            <Responsive.Desktop>
+              <Badge variant="success">Desktop — md and above (≥ 768px)</Badge>
+            </Responsive.Desktop>
+          </div>
+
+          <div className="border-border bg-card grid grid-cols-1 gap-3 rounded-lg border p-5 shadow-[var(--shadow-card)] sm:grid-cols-2">
+            <div className="space-y-1">
+              <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+                Responsive.Up
+              </p>
+              <Responsive.Up from="sm">
+                <Badge variant="success">up("sm") ✓</Badge>
+              </Responsive.Up>
+              <Responsive.Up from="md">
+                <Badge variant="success">up("md") ✓</Badge>
+              </Responsive.Up>
+              <Responsive.Up from="lg">
+                <Badge variant="success">up("lg") ✓</Badge>
+              </Responsive.Up>
+              <Responsive.Up from="xl">
+                <Badge variant="success">up("xl") ✓</Badge>
+              </Responsive.Up>
+              <Responsive.Up from="2xl">
+                <Badge variant="success">up("2xl") ✓</Badge>
+              </Responsive.Up>
+            </div>
+            <div className="space-y-1">
+              <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+                Responsive.Down
+              </p>
+              <Responsive.Down to="sm">
+                <Badge variant="warning">down("sm") ✓</Badge>
+              </Responsive.Down>
+              <Responsive.Down to="md">
+                <Badge variant="warning">down("md") ✓</Badge>
+              </Responsive.Down>
+              <Responsive.Down to="lg">
+                <Badge variant="warning">down("lg") ✓</Badge>
+              </Responsive.Down>
+              <Responsive.Down to="xl">
+                <Badge variant="warning">down("xl") ✓</Badge>
+              </Responsive.Down>
+              <Responsive.Down to="2xl">
+                <Badge variant="warning">down("2xl") ✓</Badge>
+              </Responsive.Down>
+            </div>
+          </div>
+        </Responsive>
+      </div>
+
+      <div className="space-y-6">
+        <SectionTitle
+          title="Tabs"
+          subtitle="Variantes line e default — full-width com scroll horizontal"
+        />
+
+        <div className="border-border bg-card space-y-2 rounded-lg border p-5 shadow-[var(--shadow-card)]">
+          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+            Variant: line (padrão)
+          </p>
           <Tabs defaultValue="overview">
             <TabsList variant="line">
               <TabsTrigger value="overview">Visão Geral</TabsTrigger>
@@ -272,8 +345,10 @@ export function DesignSystemPage() {
           </Tabs>
         </div>
 
-        <div className="border-border bg-card rounded-lg border p-5 shadow-[var(--shadow-card)] space-y-2">
-          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">Variant: default (pill/segment)</p>
+        <div className="border-border bg-card space-y-2 rounded-lg border p-5 shadow-[var(--shadow-card)]">
+          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+            Variant: default (pill/segment)
+          </p>
           <Tabs defaultValue="overview">
             <TabsList variant="default">
               <TabsTrigger value="overview">Visão Geral</TabsTrigger>
