@@ -39,7 +39,9 @@ export function LoginShowcasePage() {
       {submittedData && (
         <Alert variant="success">
           <AlertTitle>Submitted successfully!</AlertTitle>
-          <AlertDescription>asdasdausydguasdguasygduaygsd asdg uasydg uasydg</AlertDescription>
+          <AlertDescription>
+            <pre className="mt-1 text-xs">{JSON.stringify(submittedData, null, 2)}</pre>
+          </AlertDescription>
         </Alert>
       )}
 
