@@ -3,14 +3,7 @@
 import * as React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../components/ui/form';
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { Slider } from '../components/ui/slider';
 
 interface FormSliderProps<

@@ -3,15 +3,8 @@
 import * as React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { DatePicker } from '../components/ui/date-picker';
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../components/ui/form';
 
 interface FormDatePickerProps<
   TFieldValues extends FieldValues = FieldValues,

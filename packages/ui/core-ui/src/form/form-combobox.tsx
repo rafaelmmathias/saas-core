@@ -3,15 +3,8 @@
 import * as React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { Combobox, type ComboboxOption } from '../components/ui/combobox';
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../components/ui/form';
 
 interface FormComboboxProps<
   TFieldValues extends FieldValues = FieldValues,

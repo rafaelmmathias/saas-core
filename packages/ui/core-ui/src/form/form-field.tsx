@@ -10,7 +10,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../components/ui/form';
+} from './form';
 
 interface FormFieldWrapperProps<
   TFieldValues extends FieldValues = FieldValues,

@@ -3,15 +3,8 @@
 import * as React from 'react';
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { Checkbox } from '../components/ui/checkbox';
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../components/ui/form';
 
 interface FormCheckboxProps<
   TFieldValues extends FieldValues = FieldValues,

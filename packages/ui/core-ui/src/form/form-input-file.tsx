@@ -3,14 +3,7 @@
 import type { ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 
-import {
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '../components/ui/form';
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from './form';
 import { InputFile, type InputFileProps } from '../components/ui/input-file';
 
 interface FormInputFileProps<
