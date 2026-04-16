@@ -30,16 +30,14 @@ async function main() {
   const ctx = await retrieve(query);
   console.log(` done`);
 
-  const sources = [...new Set(ctx.chunks.map(c => c.filePath))];
+  const sources = [...new Set(ctx.chunks.map((c) => c.filePath))];
   console.log(`\nTop ${ctx.chunks.length} chunks from:`);
-  sources.forEach(s => console.log(`  · ${s}`));
+  sources.forEach((s) => console.log(`  · ${s}`));
 
   const contextFile = await writeContext(ctx);
 
   // Make the path relative to repo root for the @ reference
-  const repoRelative = path
-    .relative(CONFIG.REPO_ROOT, contextFile)
-    .replace(/\\/g, '/');
+  const repoRelative = path.relative(CONFIG.REPO_ROOT, contextFile).replace(/\\/g, '/');
 
   console.log(`\nContext saved to: ${repoRelative}`);
   const sep = '-'.repeat(60);
@@ -49,7 +47,7 @@ async function main() {
   console.log(`\n${sep}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err instanceof Error ? err.message : err);
   process.exit(1);
 });

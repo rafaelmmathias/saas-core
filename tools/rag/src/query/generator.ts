@@ -12,7 +12,7 @@ import type { RetrievedContext } from './retriever.js';
 export async function writeContext(ctx: RetrievedContext): Promise<string> {
   await fs.mkdir(path.dirname(CONFIG.CONTEXT_PATH), { recursive: true });
 
-  const sources = [...new Set(ctx.chunks.map(c => c.filePath))];
+  const sources = [...new Set(ctx.chunks.map((c) => c.filePath))];
 
   const lines: string[] = [
     `# RAG Context`,
@@ -22,7 +22,7 @@ export async function writeContext(ctx: RetrievedContext): Promise<string> {
     `**Generated:** ${new Date().toISOString()}`,
     ``,
     `## Sources`,
-    ...sources.map(s => `- \`${s}\``),
+    ...sources.map((s) => `- \`${s}\``),
     ``,
     `## Chunks`,
     ``,

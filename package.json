@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "turbo run dev",
     "play": "pnpm --filter @saas-core/playground dev",
+    "playground:typecheck": "pnpm --filter @saas-core/playground typecheck",
+    "coreui:typecheck": "pnpm --filter @saas-core/core-ui typecheck",
     "planner:dev": "pnpm --filter @saas-core/planner dev",
     "planner:build": "pnpm --filter @saas-core/planner build",
     "planner:lint": "pnpm --filter @saas-core/planner lint",

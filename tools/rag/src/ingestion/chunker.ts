@@ -15,12 +15,10 @@ export interface Chunk {
 const CODE_EXTENSIONS = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.mts']);
 
 export function chunkFile(file: SourceFile): Chunk[] {
-  const chunks = CODE_EXTENSIONS.has(file.extension)
-    ? chunkCode(file)
-    : chunkText(file);
+  const chunks = CODE_EXTENSIONS.has(file.extension) ? chunkCode(file) : chunkText(file);
 
   // Prefix every chunk with its file path so the LLM always knows the source
-  return chunks.map(c => ({
+  return chunks.map((c) => ({
     ...c,
     content: `// File: ${file.relativePath}\n${c.content}`,
   }));

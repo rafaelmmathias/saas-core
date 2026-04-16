@@ -15,23 +15,42 @@ export const CONFIG = {
 
   // fastembed downloads BAAI/bge-small-en-v1.5 (~66MB) on first run
   // Cached to ~/.cache/fastembed or HF_CACHE env var
-  CHUNK_SIZE: 1500,   // characters per chunk
-  CHUNK_OVERLAP: 3,   // lines to carry over into the next chunk
+  CHUNK_SIZE: 1500, // characters per chunk
+  CHUNK_OVERLAP: 3, // lines to carry over into the next chunk
 
-  TOP_K: 8,           // chunks to retrieve per query
+  TOP_K: 16, // chunks to retrieve per query
 
   IGNORE_DIRS: new Set([
-    'node_modules', '.git', 'dist', 'build', '.turbo', 'coverage',
-    '.next', 'out', '.cache', '__pycache__', 'data',
+    'node_modules',
+    '.git',
+    'dist',
+    'build',
+    '.turbo',
+    'coverage',
+    '.next',
+    'out',
+    '.cache',
+    '__pycache__',
+    'data',
   ]),
 
   INCLUDE_EXTENSIONS: new Set([
-    '.ts', '.tsx', '.js', '.jsx', '.mjs', '.mts',
-    '.json', '.md', '.mdx', '.yaml', '.yml',
-    '.css', '.html',
+    '.ts',
+    '.tsx',
+    '.js',
+    '.jsx',
+    '.mjs',
+    '.mts',
+    '.json',
+    '.md',
+    '.mdx',
+    '.yaml',
+    '.yml',
+    '.css',
+    '.html',
   ]),
 
-  IGNORE_FILES: new Set([
-    '.env', '.env.local', 'pnpm-lock.yaml', 'package-lock.json',
-  ]),
+  IGNORE_FILES: new Set(['.env', '.env.local', 'pnpm-lock.yaml', 'package-lock.json']),
+
+  EMBEDDINGS_MODEL: 'BAAI/bge-small-en-v1.5',
 } as const;

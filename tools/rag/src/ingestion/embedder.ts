@@ -24,7 +24,7 @@ export interface EmbeddedChunk extends Chunk {
 
 export async function embedChunks(chunks: Chunk[]): Promise<EmbeddedChunk[]> {
   const model = await getModel();
-  const texts = chunks.map(c => c.content.slice(0, MAX_CHARS));
+  const texts = chunks.map((c) => c.content.slice(0, MAX_CHARS));
   const results: EmbeddedChunk[] = [];
   let i = 0;
 

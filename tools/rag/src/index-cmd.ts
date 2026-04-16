@@ -24,7 +24,7 @@ async function main() {
   console.log(` ${files.length} files found.`);
 
   // 2. Chunk
-  const chunks = files.flatMap(f => chunkFile(f));
+  const chunks = files.flatMap((f) => chunkFile(f));
   console.log(`Chunked into ${chunks.length} pieces.\n`);
 
   if (chunks.length === 0) {
@@ -43,7 +43,7 @@ async function main() {
   console.log(`Store: ${CONFIG.DB_PATH}`);
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error(err instanceof Error ? err.message : err);
   process.exit(1);
 });

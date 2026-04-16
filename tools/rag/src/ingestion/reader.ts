@@ -28,7 +28,7 @@ async function walk(dir: string, repoRoot: string, results: SourceFile[]): Promi
   }
 
   await Promise.all(
-    entries.map(async entry => {
+    entries.map(async (entry) => {
       if (entry.isDirectory()) {
         if (!CONFIG.IGNORE_DIRS.has(entry.name)) {
           await walk(path.join(dir, entry.name), repoRoot, results);
