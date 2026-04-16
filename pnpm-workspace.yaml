@@ -1,5 +1,6 @@
 packages:
   - "apps/*"
+  - "tools/*"
   - "packages/core"
   - "packages/config/*"
   - "packages/ui/*"
@@ -8,3 +9,4 @@ packages:
 onlyBuiltDependencies:
   - esbuild
   - unrs-resolver
+  - onnxruntime-node

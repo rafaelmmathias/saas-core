@@ -183,3 +183,7 @@ All packages declare `"sideEffects": false`. The `saas-core/no-top-level-side-ef
    - With JSX → `@saas-core/config-eslint/library-react`
 4. Add `turbo.json` with `{ "extends": ["//"], "tasks": { "build": { "outputs": [] } } }` if build doesn't emit files
 5. Register the new glob pattern in `pnpm-workspace.yaml` if adding a new layer folder
+
+## Codebase Research
+
+Before reading files or directories to understand how something works, run `pnpm rag:query "<question>"` and use the retrieved context as your starting point. Use Grep/Read only for targeted lookups of known symbols or file paths (e.g. finding a specific function, reading a file you already know exists).
