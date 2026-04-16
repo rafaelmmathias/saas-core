@@ -9,7 +9,7 @@ export interface RetrievedContext {
 
 // ─── Path boosting ────────────────────────────────────────────────────────────
 
-const STOP_WORDS = new Set([
+export const STOP_WORDS = new Set([
   'how',
   'does',
   'the',
@@ -52,9 +52,9 @@ const STOP_WORDS = new Set([
   'used',
 ]);
 
-const PATH_BOOST = 0.1; // added to score per matching keyword in file path
+export const PATH_BOOST = 0.1; // added to score per matching keyword in file path
 
-function extractKeywords(query: string): string[] {
+export function extractKeywords(query: string): string[] {
   return query
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ')
@@ -66,15 +66,15 @@ function extractKeywords(query: string): string[] {
  * Returns a boost value if any keyword shares a 4+ char common prefix with a path token.
  * Handles morphological variants like "theming"↔"theme", "auth"↔"authentication", etc.
  */
-function commonPrefixLen(a: string, b: string): number {
+export function commonPrefixLen(a: string, b: string): number {
   let i = 0;
   while (i < a.length && i < b.length && a[i] === b[i]) i++;
   return i;
 }
 
-const MIN_PREFIX = 4;
+export const MIN_PREFIX = 4;
 
-function computePathBoost(filePath: string, keywords: string[]): number {
+export function computePathBoost(filePath: string, keywords: string[]): number {
   const pathTokens = filePath.toLowerCase().split(/[/.\-_]/);
   const matches = keywords.filter((kw) =>
     pathTokens.some(

@@ -48,6 +48,9 @@ async function walk(dir: string, repoRoot: string, results: SourceFile[]): Promi
       const relativePath = path.relative(repoRoot, filePath).replace(/\\/g, '/');
 
       try {
+        const stat = await fs.stat(filePath);
+        if (stat.size > CONFIG.MAX_FILE_BYTES) return; // skip large generated/locale files
+
         const content = await fs.readFile(filePath, 'utf-8');
         if (content.trim().length < 30) return; // skip near-empty files
 

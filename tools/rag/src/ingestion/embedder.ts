@@ -1,9 +1,9 @@
 import { FlagEmbedding, EmbeddingModel } from 'fastembed';
+import { CONFIG } from '../config.js';
 import type { Chunk } from './chunker.js';
 
 // BAAI/bge-small-en-v1.5 — 384 dims, ~66MB download (cached), great for code search
 const MODEL = EmbeddingModel.BGESmallENV15;
-const BATCH_SIZE = 32;
 const MAX_CHARS = 2000; // ~500 tokens — well within BGE-small's 512-token capacity
 
 let _model: FlagEmbedding | null = null;
@@ -29,7 +29,7 @@ export async function embedChunks(chunks: Chunk[]): Promise<EmbeddedChunk[]> {
   let i = 0;
 
   // embed() yields batches of Float32Array (one per input text)
-  for await (const batch of model.embed(texts, BATCH_SIZE)) {
+  for await (const batch of model.embed(texts, CONFIG.BATCH_SIZE)) {
     for (const vec of batch) {
       const chunk = chunks[i];
       if (chunk) results.push({ ...chunk, vector: Array.from(vec) });

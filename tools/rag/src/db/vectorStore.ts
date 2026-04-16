@@ -23,26 +23,45 @@ interface VectorStore {
   chunks: StoredChunk[];
 }
 
+export interface Manifest {
+  version: 1;
+  files: Record<string, string>; // relativePath -> sha1 hash
+}
+
 // ─── Persistence ────────────────────────────────────────────────────────────
 
 export async function saveIndex(chunks: EmbeddedChunk[]): Promise<void> {
+  const raw = chunks.map((c) => ({
+    id: c.id,
+    vector: c.vector,
+    content: c.content,
+    filePath: c.metadata.filePath,
+    startLine: c.metadata.startLine,
+    endLine: c.metadata.endLine,
+    chunkIndex: c.metadata.chunkIndex,
+  }));
+  await saveRawChunks(raw);
+}
+
+export async function saveRawChunks(chunks: StoredChunk[]): Promise<void> {
   await fs.mkdir(path.dirname(CONFIG.DB_PATH), { recursive: true });
 
   const store: VectorStore = {
     createdAt: new Date().toISOString(),
     model: CONFIG.EMBEDDINGS_MODEL,
-    chunks: chunks.map((c) => ({
-      id: c.id,
-      vector: c.vector,
-      content: c.content,
-      filePath: c.metadata.filePath,
-      startLine: c.metadata.startLine,
-      endLine: c.metadata.endLine,
-      chunkIndex: c.metadata.chunkIndex,
-    })),
+    chunks,
   };
 
   await fs.writeFile(CONFIG.DB_PATH, JSON.stringify(store));
+}
+
+export async function loadRawChunks(): Promise<StoredChunk[]> {
+  try {
+    const raw = await fs.readFile(CONFIG.DB_PATH, 'utf-8');
+    return (JSON.parse(raw) as VectorStore).chunks;
+  } catch {
+    return [];
+  }
 }
 
 async function loadIndex(): Promise<VectorStore> {
@@ -55,6 +74,20 @@ async function loadIndex(): Promise<VectorStore> {
     );
   }
   return JSON.parse(raw) as VectorStore;
+}
+
+export async function loadManifest(): Promise<Manifest> {
+  try {
+    const raw = await fs.readFile(CONFIG.MANIFEST_PATH, 'utf-8');
+    return JSON.parse(raw) as Manifest;
+  } catch {
+    return { version: 1, files: {} };
+  }
+}
+
+export async function saveManifest(manifest: Manifest): Promise<void> {
+  await fs.mkdir(path.dirname(CONFIG.MANIFEST_PATH), { recursive: true });
+  await fs.writeFile(CONFIG.MANIFEST_PATH, JSON.stringify(manifest));
 }
 
 // ─── Retrieval ───────────────────────────────────────────────────────────────
@@ -89,7 +122,7 @@ export async function getIndexStats(): Promise<{
 
 // ─── Math ────────────────────────────────────────────────────────────────────
 
-function cosineSimilarity(a: number[], b: number[]): number {
+export function cosineSimilarity(a: number[], b: number[]): number {
   let dot = 0;
   let normA = 0;
   let normB = 0;
