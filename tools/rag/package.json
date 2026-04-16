@@ -1,0 +1,22 @@
+{
+  "name": "@saas-core/rag",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "rag:index": "tsx src/index-cmd.ts",
+    "rag:query": "tsx src/query-cmd.ts",
+    "test": "node --import tsx/esm --test src/__tests__/**/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fastembed": "^1.14.1",
+    "dotenv": "^16.5.0"
+  },
+  "devDependencies": {
+    "@saas-core/config-ts": "workspace:*",
+    "@types/node": "^25.6.0",
+    "tsx": "^4.19.3",
+    "typescript": "^6.0.2"
+  }
+}
