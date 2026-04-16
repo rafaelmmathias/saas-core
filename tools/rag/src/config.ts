@@ -19,6 +19,8 @@ export const CONFIG = {
   CHUNK_OVERLAP: 3, // lines to carry over into the next chunk
 
   TOP_K: 16, // chunks to retrieve per query
+  SCORE_THRESHOLD: 0.35, // minimum cosine similarity — chunks below this are discarded
+  MAX_CHUNKS_PER_FILE: 2, // max chunks from the same file in a single result set
 
   IGNORE_DIRS: new Set([
     'node_modules',
@@ -32,6 +34,8 @@ export const CONFIG = {
     '.cache',
     '__pycache__',
     'data',
+    'rag',
+    '.claude',
   ]),
 
   INCLUDE_EXTENSIONS: new Set([

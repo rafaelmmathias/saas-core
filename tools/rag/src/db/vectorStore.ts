@@ -13,6 +13,10 @@ export interface StoredChunk {
   chunkIndex: number;
 }
 
+export interface ScoredChunk extends StoredChunk {
+  score: number;
+}
+
 interface VectorStore {
   createdAt: string;
   model: string;
@@ -62,14 +66,16 @@ async function loadIndex(): Promise<VectorStore> {
 export async function searchChunks(
   queryVector: number[],
   topK: number = CONFIG.TOP_K,
-): Promise<StoredChunk[]> {
+  threshold: number = CONFIG.SCORE_THRESHOLD,
+): Promise<ScoredChunk[]> {
   const store = await loadIndex();
 
   return store.chunks
     .map((chunk) => ({ chunk, score: cosineSimilarity(queryVector, chunk.vector) }))
+    .filter((r) => r.score >= threshold)
     .sort((a, b) => b.score - a.score)
     .slice(0, topK)
-    .map((r) => r.chunk);
+    .map((r) => ({ ...r.chunk, score: r.score }));
 }
 
 export async function getIndexStats(): Promise<{

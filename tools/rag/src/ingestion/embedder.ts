@@ -4,7 +4,7 @@ import type { Chunk } from './chunker.js';
 // BAAI/bge-small-en-v1.5 — 384 dims, ~66MB download (cached), great for code search
 const MODEL = EmbeddingModel.BGESmallENV15;
 const BATCH_SIZE = 32;
-const MAX_CHARS = 512; // ~128 tokens — safe limit for this model
+const MAX_CHARS = 2000; // ~500 tokens — well within BGE-small's 512-token capacity
 
 let _model: FlagEmbedding | null = null;
 

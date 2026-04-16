@@ -32,7 +32,7 @@ export async function writeContext(ctx: RetrievedContext): Promise<string> {
     const chunk = ctx.chunks[i];
     if (!chunk) continue;
     lines.push(
-      `### [${i + 1}] \`${chunk.filePath}\` (lines ${chunk.startLine}–${chunk.endLine})`,
+      `### [${i + 1}] \`${chunk.filePath}\` (lines ${chunk.startLine}–${chunk.endLine}) — score: ${chunk.score.toFixed(3)}`,
       ``,
       '```',
       chunk.content,
